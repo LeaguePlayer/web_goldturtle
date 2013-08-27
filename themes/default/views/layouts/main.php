@@ -27,6 +27,7 @@
 		<title><?php echo $this->title; ?></title>
 		<!--[if IE]>
 	    <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+        
 	    <![endif]-->
 	</head>
 	<body <?php $this->is_home() ? print 'class="background"' : print '';?>>
