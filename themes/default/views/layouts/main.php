@@ -30,7 +30,7 @@
 	    <![endif]-->
 	</head>
 	<body <?php $this->is_home() ? print 'class="background"' : print '';?>>
-		<header id="header" class="h_main">
+		<header id="header" class="<?php if ($this->currentPage == 'main') echo 'h_main'; ?>">
 			<section class="fix-width top">
 				<div class="logo_container">
 					<a href="/" class="logo">

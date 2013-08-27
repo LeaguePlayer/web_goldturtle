@@ -5,6 +5,9 @@
 Capfile
 #---
 
+#phpStorm
+.idea
+
 protected/runtime/
 themes/classic/views/
 protected/config/main.php
