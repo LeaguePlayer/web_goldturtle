@@ -18,6 +18,7 @@ $this->menu=array(
 			'value'=>'TbHtml::imageRounded($data->getThumb("small"))'
 		),
 		'title',
+        'alias',
 		array(
 			'name'=>'status',
 			'type'=>'raw',

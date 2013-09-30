@@ -12,6 +12,7 @@
 	</div>
 
 	<?php echo $form->textFieldControlGroup($model,'title',array('class'=>'span8','maxlength'=>256)); ?>
+    <?php echo $form->textFieldControlGroup($model,'alias',array('class'=>'span8','maxlength'=>256)); ?>
 
 	<div class='control-group'>
 		<?php echo CHtml::activeLabelEx($model, 'html_description'); ?>

@@ -32,6 +32,7 @@ class m130806_030902_places extends CDbMigration
             'id' => 'pk', // auto increment
 			'image' => 'varchar(256) COMMENT \'Логотип\'',
 			'title' => 'varchar(256) COMMENT \'Название места\'',
+            'alias' => 'varchar(256) COMMENT \'Идентификатор\'',
 			'html_description' => 'text COMMENT \'Описание\'',
 			'status' => 'tinyint COMMENT \'Статус\'',
 			'sort' => 'integer COMMENT \'Вес для сортировки\'',

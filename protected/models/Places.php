@@ -26,7 +26,7 @@ class Places extends EActiveRecord
 		return array(
 			array('title', 'required'),
 			array('status, sort, create_time, update_time', 'numerical', 'integerOnly'=>true),
-			array('title', 'length', 'max'=>256),
+			array('title, alias', 'length', 'max'=>256),
 			array('html_description', 'safe'),
 			// The following rule is used by search().
 			array('id, image, title, html_description, status, sort, create_time, update_time', 'safe', 'on'=>'search'),
@@ -47,6 +47,7 @@ class Places extends EActiveRecord
 			'id' => 'ID',
 			'image' => 'Логотип',
 			'title' => 'Название места',
+            'alias' => 'Идентификатор',
 			'html_description' => 'Описание',
 			'status' => 'Статус',
 			'sort' => 'Вес для сортировки',
@@ -81,6 +82,7 @@ class Places extends EActiveRecord
 		$criteria->compare('id',$this->id);
 		$criteria->compare('image',$this->image,true);
 		$criteria->compare('title',$this->title,true);
+        $criteria->compare('alias',$this->alias,true);
 		$criteria->compare('html_description',$this->html_description,true);
 		$criteria->compare('status',$this->status);
 		$criteria->compare('sort',$this->sort);
@@ -102,4 +104,20 @@ class Places extends EActiveRecord
 	{
 		return 'Рестораны';
 	}
+
+    public function beforeSave()
+    {
+        if ( parent::beforeSave() ) {
+            if ( empty($this->alias) ) {
+                $this->alias = SiteHelper::translit($this->title);
+            }
+            return true;
+        }
+        return false;
+    }
+
+    public function getChangeUrl()
+    {
+        return Yii::app()->urlManager->createUrl('/site/place', array('select'=>$this->alias));
+    }
 }

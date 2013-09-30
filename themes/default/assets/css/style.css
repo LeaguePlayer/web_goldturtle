@@ -250,67 +250,67 @@ ul.socials li a.vkontakte:hover {
 	background: url('../img/bg-pattern-white.jpg') repeat;
 	margin-bottom: 90px;
 }
+    #header .logo_container {
+        display: inline-block;
+        vertical-align: top;
+        position: relative;
+        width: 180px;
+        height: 160px;
+        /* задаем глубину сцене */
+        -webkit-perspective: 600px; /* webkit */
+        -moz-perspective: 600px; /* mozilla */
+        -ms-perspective: 600px; /* IE 10 */
+        -o-perspective: 600px; /* opera когда-то тоже должна начать понимать */
+        perspective: 600px; /* св-во по стандартам */
+        position: relative;
+        z-index: 10;
+    }
+    #header .logo_container a.logo {
+        display: table-cell;
+        vertical-align: middle;
+        width: 180px;
+        height: 160px;
+        background-color: #fcead5;
+        -moz-box-shadow: 0 0 20px -4px #C7C7C7;
+        -webkit-box-shadow: 0 0 20px -4px #C7C7C7;
+        box-shadow: 0 0 20px -4px #C7C7C7;
+        position: relative;
+        top: 0;
+        left: 0;
+        text-align: center;
+        outline: none;
+
+        -webkit-transition: -webkit-transform 0.8s;
+        -moz-transition: -moz-transform 0.8s;
+        -ms-transition: -moz-transform 0.8s;
+        -o-transition: -o-transform 0.8s;
+        transition: transform 0.8s; /* трансформации будут происходить анимированно продолжительностью 0.5 сек */
+
+        -webkit-transform-style: preserve-3d;
+        -moz-transform-style: preserve-3d;
+        -ms-transform-style: preserve-3d;
+        -o-transform-style: preserve-3d;
+        transform-style: preserve-3d;   /* указываем, что дочерние элементы находятся в 3D пространстве */
+    }
+    #header .logo_container a.logo .front {
+        margin: 0;
+        line-height: 0;
+        padding: 0;
+        display: inline-block;
+    }
+    #header .logo_container a.logo img {
+        display: inline-block;
+        width: 160px;
+    }
+    #header .logo_container:hover a.logo {
+        -webkit-transform: rotateY( 360deg );
+        -moz-transform: rotateY( 360deg );
+        -ms-transform: rotateY( 360deg );
+        -o-transform: rotateY( 360deg );
+        transform: rotateY( 360deg );
+    }
 	#header .top {
 		height: 110px;
-	}
-	#header .logo_container {
-		display: inline-block;
-		vertical-align: top;
-		position: relative;
-		width: 180px;
-		height: 160px;
-		/* задаем глубину сцене */
-		-webkit-perspective: 600px; /* webkit */
-		-moz-perspective: 600px; /* mozilla */
-		-ms-perspective: 600px; /* IE 10 */
-		-o-perspective: 600px; /* opera когда-то тоже должна начать понимать */
-		perspective: 600px; /* св-во по стандартам */
-		position: relative;
-		z-index: 10;
-	}
-	#header a.logo {
-		display: table-cell;
-		vertical-align: middle;
-		width: 180px;
-		height: 160px;
-		background-color: #fff;
-		-moz-box-shadow: 0 0 20px -4px #C7C7C7;
-		-webkit-box-shadow: 0 0 20px -4px #C7C7C7;
-		box-shadow: 0 0 20px -4px #C7C7C7;
-		position: relative;
-		top: 0;
-		left: 0;
-		text-align: center;
-		outline: none;
-		
-		-webkit-transition: -webkit-transform 0.5s;
-		-moz-transition: -moz-transform 0.5s;
-		-ms-transition: -moz-transform 0.5s;
-		-o-transition: -o-transform 0.5s;
-		transition: transform 0.5s; /* трансформации будут происходить анимированно продолжительностью 0.5 сек */
-		 
-		-webkit-transform-style: preserve-3d;
-		-moz-transform-style: preserve-3d;
-		-ms-transform-style: preserve-3d;
-		-o-transform-style: preserve-3d;
-		transform-style: preserve-3d;   /* указываем, что дочерние элементы находятся в 3D пространстве */
-	}
-	#header a.logo .front {
-		margin: 0;
-		line-height: 0;
-		padding: 0;
-		display: inline-block;
-	}
-	#header a.logo img {
-		display: inline-block;
-		width: 160px;
-	}
-	#header .logo_container:hover a.logo {
-		-webkit-transform: rotateY( 180deg );
-		-moz-transform: rotateY( 180deg );
-		-ms-transform: rotateY( 180deg );
-		-o-transform: rotateY( 180deg );
-		transform: rotateY( 180deg );
 	}
 	#header .h-content {
 		display: inline-block;
@@ -1954,4 +1954,88 @@ ul.round {
 
 .ui-timepicker-div select {
 	width: 62px;
+}
+
+
+
+/*************
+ * Выбор зала
+ *************/
+#place-list .item {
+    padding-left: 10px;
+    display: inline-block;
+    vertical-align: top;
+    width: 180px;
+    margin-right: 40px;
+}
+#place-list .item .placelogo {
+    margin-bottom: 20px;
+    width: 100%;
+}
+#place-list .item .description {
+    width: 100%;
+}
+#place-list .item .description h3 {
+    font-size: 20px;
+    text-align: center;
+}
+
+#place-list .logo_container {
+    display: inline-block;
+    vertical-align: top;
+    position: relative;
+    width: 180px;
+    height: 160px;
+    /* задаем глубину сцене */
+    -webkit-perspective: 600px; /* webkit */
+    -moz-perspective: 600px; /* mozilla */
+    -ms-perspective: 600px; /* IE 10 */
+    -o-perspective: 600px; /* opera когда-то тоже должна начать понимать */
+    perspective: 600px; /* св-во по стандартам */
+    position: relative;
+    z-index: 10;
+}
+#place-list .logo_container a.logo {
+    display: table-cell;
+    vertical-align: middle;
+    width: 180px;
+    height: 160px;
+    background-color: #fcead5;
+    -moz-box-shadow: 0 0 20px -4px #C7C7C7;
+    -webkit-box-shadow: 0 0 20px -4px #C7C7C7;
+    box-shadow: 0 0 20px -4px #C7C7C7;
+    position: relative;
+    top: 0;
+    left: 0;
+    text-align: center;
+    outline: none;
+
+    -webkit-transition: -webkit-transform 0.8s;
+    -moz-transition: -moz-transform 0.8s;
+    -ms-transition: -moz-transform 0.8s;
+    -o-transition: -o-transform 0.8s;
+    transition: transform 0.8s; /* трансформации будут происходить анимированно продолжительностью 0.5 сек */
+
+    -webkit-transform-style: preserve-3d;
+    -moz-transform-style: preserve-3d;
+    -ms-transform-style: preserve-3d;
+    -o-transform-style: preserve-3d;
+    transform-style: preserve-3d;   /* указываем, что дочерние элементы находятся в 3D пространстве */
+}
+#place-list .logo_container a.logo .front {
+    margin: 0;
+    line-height: 0;
+    padding: 0;
+    display: inline-block;
+}
+#place-list .logo_container a.logo img {
+    display: inline-block;
+    width: 160px;
+}
+#place-list .logo_container:hover a.logo {
+    -webkit-transform: rotateY( 360deg );
+    -moz-transform: rotateY( 360deg );
+    -ms-transform: rotateY( 360deg );
+    -o-transform: rotateY( 360deg );
+    transform: rotateY( 360deg );
 }

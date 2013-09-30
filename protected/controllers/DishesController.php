@@ -55,7 +55,8 @@ class DishesController extends Controller
 	{
 		$criteria = new CDbCriteria;
 		$criteria->order = 'create_time';
-		$criteria->addCondition('status=:status');
+        $criteria->addCondition('place_id=:place_id AND status=:status');
+        $criteria->params[':place_id'] = $this->place['id'];
 		$criteria->params[':status'] = Dishes::STATUS_PUBLISH;
 		$dataProvider=new CActiveDataProvider('Dishes', array(
 			'criteria' => $criteria,

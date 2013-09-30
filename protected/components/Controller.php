@@ -62,28 +62,19 @@ class Controller extends CController
 
 		//Change theme
 		Yii::app()->theme = 'default';
-
 		if(Yii::app()->getRequest()->getParam('update_assets')) $this->forceCopyAssets = true;
-
-		//Css initialize
-		
-		// Определение текущего заведения
-		$placeState;
-		$cookie = Yii::app()->request->cookies['CURRENT_PLACE'];
-		if ( isset($cookie) ) {
-			$placeState = CJSON::decode($cookie->value);
-		} else {
-			$place = Places::model()->find(array('order'=>'id'));
-			if ($place !== null) {
-				$placeState['id'] = $place->id;
-				$placeState = $place->attributes;
-				$placeState['logo'] = $place->getThumb('medium');
-				$cookie = new CHttpCookie('CURRENT_PLACE', CJSON::encode($placeState));
-				Yii::app()->request->cookies['CURRENT_PLACE'] = $cookie;
-			}
-		}
-		$this->place = $placeState;
 	}
+
+    public function beforeAction($action)
+    {
+        // Определение текущего заведения
+        $cookie = Yii::app()->request->cookies['CURRENT_PLACE'];
+        if ( $this->route !== 'site/place' and !isset($cookie) ) {
+            $this->redirect('/site/place');
+        }
+        $this->place = CJSON::decode($cookie->value);
+        return parent::beforeAction($action);
+    }
 
 	//Get Clip
 	public function getClip($name){

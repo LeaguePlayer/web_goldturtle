@@ -3,7 +3,6 @@
 /* @var $dataProvider CActiveDataProvider */
 ?>
 
-<?php if ($dataProvider->totalItemCount != 0): ?>
 <div class="topics chronic">
 	<a href="<?php echo Events::getChroniclesUrl(); ?>" class="action">Все светские новости</a>
 	<h2 class="caption">Светская хроника</h2>
@@ -15,4 +14,3 @@
 		'emptyText'=>'Хроника пуста'
 	)); ?>
 </div>
-<?php endif; ?>

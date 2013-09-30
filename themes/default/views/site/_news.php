@@ -3,7 +3,6 @@
 /* @var $dataProvider CActiveDataProvider */
 ?>
 
-<?php if ($dataProvider->totalItemCount != 0): ?>
 <div class="topics news">
 	<a href="<?php echo Events::getNewsUrl(); ?>" class="action">Показать все новости</a>
 	<h2 class="caption">Новости ресторана</h2>
@@ -15,4 +14,3 @@
 		'emptyText'=>'Нет новостей'
 	)); ?>
 </div>
-<?php endif; ?>

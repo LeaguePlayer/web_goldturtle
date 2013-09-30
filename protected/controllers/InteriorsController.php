@@ -55,8 +55,9 @@ class InteriorsController extends Controller
 	{
 		$criteria = new CDbCriteria;
 		$criteria->order = 'create_time';
-		$criteria->addCondition('status=:status');
-		$criteria->params[':status'] = Interiors::STATUS_PUBLISH;
+        $criteria->addCondition('place_id=:place_id AND status=:status');
+        $criteria->params[':place_id'] = $this->place['id'];
+        $criteria->params[':status'] = Interiors::STATUS_PUBLISH;
 		$dataProvider=new CActiveDataProvider('Interiors', array(
 			'criteria' => $criteria,
 			'pagination' => array(
