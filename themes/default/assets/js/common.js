@@ -10,7 +10,7 @@ $(document).ready(function() {
 				effect: "fade"
 			},
 			pagination: {
-				active: false,
+				active: false
 			},
 			effect: {
 				fade: {

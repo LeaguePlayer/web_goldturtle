@@ -70,7 +70,16 @@ class Controller extends CController
         // Определение текущего заведения
         $cookie = Yii::app()->request->cookies['CURRENT_PLACE'];
         if ( $this->route !== 'site/place' and !isset($cookie) ) {
-            $this->redirect('/site/place');
+            $place = Places::model()->find();
+            if ( !$place ) {
+                $this->redirect('/site/place');
+            }
+            $placeState = array();
+            $placeState['id'] = $place->id;
+            $placeState = $place->attributes;
+            $placeState['logo'] = $place->getThumb('medium');
+            $cookie = new CHttpCookie('CURRENT_PLACE', CJSON::encode($placeState));
+            Yii::app()->request->cookies['CURRENT_PLACE'] = $cookie;
         }
         $this->place = CJSON::decode($cookie->value);
         return parent::beforeAction($action);

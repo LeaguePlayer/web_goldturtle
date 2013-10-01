@@ -49,6 +49,7 @@
 	</div>
 </div>
 
+<?php if ( $roundData->totalItemCount > 0 ): ?>
 <div class="news_rounder" data-start_timestamp="<?php echo strtotime($model->public_date); ?>">
 	<a href="#" class="prev"></a>
 	<a href="#" class="next"></a>
@@ -60,3 +61,4 @@
 		</ul>
 	</div>
 </div>
+<?php endif; ?>
