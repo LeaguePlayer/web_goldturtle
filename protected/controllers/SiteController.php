@@ -35,6 +35,9 @@ class SiteController extends Controller
 		if ( $slider !== null and $slider->status == Slider::STATUS_PUBLISH ) {
 			$this->sliderManager = $slider->galleryManager->getGallery();
 		}
+        $this->title = Settings::getOption('site_name');
+        Yii::app()->clientScript->registerMetaTag(Settings::getOption('meta_keys'), 'Keywords');
+        Yii::app()->clientScript->registerMetaTag(Settings::getOption('meta_description'), 'Description');
 		$this->render('index');
 	}
 
@@ -75,6 +78,7 @@ class SiteController extends Controller
 				$this->refresh();
 			}
 		}
+        $this->title = 'Контакты | '.Settings::getOption('site_name');
 		$this->render('contact',array('model'=>$model));
 	}
 

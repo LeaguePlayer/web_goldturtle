@@ -10,7 +10,7 @@
 		<div class="control-group">
 			<label class="control-label" for="<?=$setting->option?>"><?=$setting->label?></label>
 			<div class="controls">
-				<?php if ( $setting->type == 'select' ): ?>
+				<?php if ( $setting->type == 'select' ) { ?>
                     <?php
                         $rangeData = unserialize($setting->ranges);
                         if ( !is_array($rangeData) ) {
@@ -22,9 +22,13 @@
 						'displaySize'=>1,
 						'empty'=>'Не задано',
 					)); ?>
-				<?php else: ?>
+                <?php } else if ( $setting->type == 'text' ) { ?>
+                    <?php echo TbHtml::textArea("Settings[{$setting->option}]", "{$setting->value}", array(
+                        'class'=>'span3',
+                    )); ?>
+				<?php } else { ?>
 					<input class="span3" maxlength="256" name="Settings[<?=$setting->option?>]" id="<?=$setting->option?>" value="<?=$setting->value?>" type="text">
-				<?php endif; ?>
+				<?php } ?>
 			</div>
 		</div>
 	<?php endforeach; ?>
