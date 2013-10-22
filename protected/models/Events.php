@@ -201,9 +201,15 @@ class Events extends EActiveRecord
 		));
 	}
 	
-	public function viewUrl($place)
+	public function viewUrl($place = false)
 	{
-		return Yii::app()->urlManager->createUrl('events/view', array('id' => $this->id, 'place'=>$place['alias']));
+        if (!$place) {
+            $place = $this->place;
+            $alias = $place->alias;
+        } else {
+            $alias = $place['alias'];
+        }
+		return Yii::app()->urlManager->createUrl('events/view', array('id' => $this->id, 'place'=>$alias));
 	}
 	
 	private $_dateArray;

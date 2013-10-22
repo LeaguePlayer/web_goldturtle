@@ -105,8 +105,14 @@ class Menu extends EActiveRecord
 		return 'Меню';
 	}
 	
-	public function getViewUrl($place)
+	public function getViewUrl($place = false)
 	{
+        if (!$place) {
+            $place = $this->place;
+            $alias = $place->alias;
+        } else {
+            $alias = $place['alias'];
+        }
 		return Yii::app()->urlManager->createUrl('/menu/view', array('id'=>$this->id, 'place'=>$place['alias']));
 	}
 }
