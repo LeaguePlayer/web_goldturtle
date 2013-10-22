@@ -166,7 +166,7 @@ class SiteController extends Controller
             $placeState['logo'] = $place->getThumb('medium');
             $cookie = new CHttpCookie('CURRENT_PLACE', CJSON::encode($placeState));
             Yii::app()->request->cookies['CURRENT_PLACE'] = $cookie;
-            $this->redirect('/');
+            $this->redirect($this->createUrl('site/index', array('place'=>$place->alias)));
         }
 
         $criteria = new CDbCriteria;

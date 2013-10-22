@@ -1,7 +1,7 @@
 <div class="item">
 	<div class="photo">
 		<?php foreach ($data->galleryManager->getGallery()->galleryPhotos as $photo): ?>
-			<a href="<?php echo $data->viewUrl; ?>"><img class="adipoli" src="<?php echo $photo->getPreview('medium'); ?>" alt=""></a>
+			<a href="<?php echo $data->getViewUrl($this->place); ?>"><img class="adipoli" src="<?php echo $photo->getPreview('medium'); ?>" alt=""></a>
 			<?php break; ?>
 		<?php endforeach; ?>
 	</div>

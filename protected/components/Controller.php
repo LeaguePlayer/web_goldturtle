@@ -68,9 +68,18 @@ class Controller extends CController
     public function beforeAction($action)
     {
         // Определение текущего заведения
+        $requestPlaceAlias = Yii::app()->request->getQuery('place');
         $cookie = Yii::app()->request->cookies['CURRENT_PLACE'];
-        if ( $this->route !== 'site/place' and !isset($cookie) ) {
-            $place = Places::model()->find();
+        $cachePlace = CJSON::decode($cookie->value);
+
+        $isPlacePage = $this->route === 'site/place';
+        $cacheEqualRequest = isset($cookie) && !empty($requestPlaceAlias) && ($requestPlaceAlias === $cachePlace['alias']);
+
+        if ( !$isPlacePage && !$cacheEqualRequest ) {
+            if ( !$requestPlaceAlias )
+                $place = Places::model()->find();
+            else
+                $place = Places::model()->findByAttributes(array('alias'=>$requestPlaceAlias));
             if ( !$place ) {
                 $this->redirect('/site/place');
             }

@@ -161,14 +161,14 @@ class Events extends EActiveRecord
 		return parent::beforeSave();
 	}
 	
-	public static function getNewsUrl()
+	public static function getNewsUrl($place)
 	{
-		return Yii::app()->urlManager->createUrl('/events/index', array('events_type' => 'news'));
+		return Yii::app()->urlManager->createUrl('/events/index', array('events_type' => 'news', 'place'=>$place['alias']));
 	}
 	
-	public static function getChroniclesUrl()
+	public static function getChroniclesUrl($place)
 	{
-		return Yii::app()->urlManager->createUrl('/events/index', array('events_type' => 'chronicle'));
+		return Yii::app()->urlManager->createUrl('/events/index', array('events_type' => 'chronicle', 'place'=>$place['alias']));
 	}
 	
 	public static function lastNews($place_id, $limit = 5)
@@ -201,9 +201,9 @@ class Events extends EActiveRecord
 		));
 	}
 	
-	public function viewUrl()
+	public function viewUrl($place)
 	{
-		return Yii::app()->urlManager->createUrl('events/view', array('id' => $this->id));
+		return Yii::app()->urlManager->createUrl('events/view', array('id' => $this->id, 'place'=>$place['alias']));
 	}
 	
 	private $_dateArray;

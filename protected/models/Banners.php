@@ -127,8 +127,8 @@ class Banners extends EActiveRecord
 		return 'Реклама';
 	}
 
-	public static function listUrl()
+	public static function listUrl($place)
 	{
-		return Yii::app()->urlManager->createUrl('/banners/index');
+		return Yii::app()->urlManager->createUrl('/banners/index', array('place'=>$place['alias']));
 	}
 }

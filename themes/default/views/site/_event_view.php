@@ -8,6 +8,6 @@
 		<img src="<?php echo $data->getThumb('medium'); ?>" alt="">
 		<p class="title"><?php echo $data->title; ?></p>
 		<p><?php echo $data->description; ?></p>
-		<a href="<?php echo $data->viewUrl(); ?>"></a>
+		<a href="<?php echo $data->viewUrl($this->place); ?>"></a>
 	</div>
 </div>

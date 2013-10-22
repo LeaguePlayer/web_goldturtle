@@ -34,7 +34,7 @@
 		<header id="header" class="<?php if ($this->currentPage == 'main') echo 'h_main'; ?>">
 			<section class="fix-width top">
 				<div class="logo_container">
-					<a href="/" class="logo">
+					<a href="<?php echo $this->createUrl('site/index', array('place'=>$this->place['alias'])); ?>" class="logo">
 						<img src="<?php echo $this->place['logo']; ?>" alt="">
 					</a>
 				</div>
@@ -42,26 +42,26 @@
 					<div class="city gray">Тюмень</div>
 
 					<ul class="main_menu">
-						<li <?php if ($this->currentPage == 'main') echo "class='current'"; ?>><a <?php if ($this->currentPage != 'main') echo "href='/'"; ?>>Главная</a></li>
+						<li <?php if ($this->currentPage == 'main') echo "class='current'"; ?>><a <?php if ($this->currentPage != 'main') echo "href='".$this->createUrl('site/index', array('place'=>$this->place['alias']))."'"; ?>>Главная</a></li>
 						<li class="separator"></li>
-						<li <?php if ($this->currentPage == 'about') echo "class='current'"; ?>><a <?php if ($this->currentPage != 'about') echo "href='".Pages::getUrlByAlias('about')."'"; ?>>О нас</a></li>
+						<li <?php if ($this->currentPage == 'about') echo "class='current'"; ?>><a <?php if ($this->currentPage != 'about') echo "href='".Pages::getUrlByAlias('about', $this->place)."'"; ?>>О нас</a></li>
 						<li class="separator"></li>
-						<li <?php if ($this->currentPage == 'contacti') echo "class='current'"; ?>><a <?php if ($this->currentPage != 'contacti') echo "href='".Pages::getUrlByAlias('contacti')."'"; ?>>Контакты</a></li>
+						<li <?php if ($this->currentPage == 'contacti') echo "class='current'"; ?>><a <?php if ($this->currentPage != 'contacti') echo "href='".Pages::getUrlByAlias('contacti', $this->place)."'"; ?>>Контакты</a></li>
 						<li class="separator"></li>
-						<li <?php if ($this->currentPage == 'jobs') echo "class='current'"; ?>><a <?php if ($this->currentPage != 'jobs') echo "href='".$this->createUrl('/jobs/index')."'"; ?>>Вакансии</a></li>
+						<li <?php if ($this->currentPage == 'jobs') echo "class='current'"; ?>><a <?php if ($this->currentPage != 'jobs') echo "href='".$this->createUrl('/jobs/index', $this->place)."'"; ?>>Вакансии</a></li>
 						<li class="separator"></li>
-						<li <?php if ($this->currentPage == 'banners') echo "class='current'"; ?>><a <?php if ($this->currentPage != 'banners') echo "href='".Banners::listUrl()."'"; ?>>Реклама</a></li>
+						<li <?php if ($this->currentPage == 'banners') echo "class='current'"; ?>><a <?php if ($this->currentPage != 'banners') echo "href='".Banners::listUrl($this->place)."'"; ?>>Реклама</a></li>
 						<li class="separator"></li>
-						<li <?php if ($this->currentPage == 'partners') echo "class='current'"; ?>><a <?php if ($this->currentPage != 'partners') echo "href='".$this->createUrl('/partners/index')."'"; ?>>Партнеры</a></li>
+						<li <?php if ($this->currentPage == 'partners') echo "class='current'"; ?>><a <?php if ($this->currentPage != 'partners') echo "href='".$this->createUrl('/partners/index', array('place'=>$this->place['alias']))."'"; ?>>Партнеры</a></li>
 					</ul>
 
 					<div class="clear"></div>
 
 					<ul class="action_menu">
 						<li><a class="room" href="<?php echo $this->createUrl('/site/place'); ?>">Выбор зала</a></li>
-						<li><a class="news" href="<?php echo Events::getNewsUrl(); ?>">Новости</a></li>
-						<li><a class="chronic" href="<?php echo Events::getChroniclesUrl(); ?>">Светская хроника</a></li>
-						<li><a class="order fancybox-ajax" href="<?php echo $this->createUrl('/site/order') ?>">Забронировать столик</a></li>
+						<li><a class="news" href="<?php echo Events::getNewsUrl($this->place); ?>">Новости</a></li>
+						<li><a class="chronic" href="<?php echo Events::getChroniclesUrl($this->place); ?>">Светская хроника</a></li>
+						<li><a class="order fancybox-ajax" href="<?php echo $this->createUrl('/site/order', array('place'=>$this->place['alias'])) ?>">Забронировать столик</a></li>
 					</ul>
 
 					<ul class="socials">
@@ -102,10 +102,10 @@
 			<p class="reserved">(с) Ресторан Золотая Черепаха</p>
 			<ul class="f_menu">
 				<li><a href="/">Главная</a></li>
-				<li><a href="<?php echo Pages::getUrlByAlias('about'); ?>">О нас</a></li>
-				<li><a href="<?php echo Pages::getUrlByAlias('contacti'); ?>">Контакты</a></li>
-				<li><a href="<?php echo Banners::listUrl(); ?>">Реклама</a></li>
-				<li><a href="<?php echo $this->createUrl('/partners/index'); ?>">Партнеры</a></li>
+				<li><a href="<?php echo Pages::getUrlByAlias('about', $this->place); ?>">О нас</a></li>
+				<li><a href="<?php echo Pages::getUrlByAlias('contacti', $this->place); ?>">Контакты</a></li>
+				<li><a href="<?php echo Banners::listUrl($this->place); ?>">Реклама</a></li>
+				<li><a href="<?php echo $this->createUrl('/partners/index', array('place'=>$this->place['alias'])); ?>">Партнеры</a></li>
 			</ul>
 			<ul class="socials">
 				<!-- <li><a class="twitter" href="#" target="_blank"></a></li> -->

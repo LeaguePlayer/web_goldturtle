@@ -117,8 +117,8 @@ class Dishes extends EActiveRecord
 		return count($this->galleryManager->getGallery()->galleryPhotos);
 	}
 	
-	public function getViewUrl()
+	public function getViewUrl($place)
 	{
-		return Yii::app()->urlManager->createUrl('/dishes/view', array('id'=>$this->id));
+		return Yii::app()->urlManager->createUrl('/dishes/view', array('id'=>$this->id, 'place'=>$place['alias']));
 	}
 }
