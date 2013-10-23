@@ -37,7 +37,9 @@
                     $getPlace = ( $this->place['alias'] !== 'restourant' ) ? array('place'=>$this->place['alias']) : array();
                 ?>
 				<div class="logo_container">
-                    <span class="logo"><img src="<?php echo $this->place['logo']; ?>" alt=""></span>
+                    <div class="perspective">
+                        <span class="logo"><img src="<?php echo $this->place['logo']; ?>" alt=""></span>
+                    </div>
 					<a href="<?php echo $this->createUrl('site/index', $getPlace); ?>"></a>
 				</div>
 				<div class="h-content">

@@ -251,8 +251,13 @@ ul.socials li a.vkontakte:hover {
 	margin-bottom: 90px;
 }
     #header .logo_container {
+        position: relative;
+        width: 180px;
+        height: 160px;
         display: inline-block;
         vertical-align: top;
+    }
+    #header .logo_container .perspective {
         position: relative;
         width: 180px;
         height: 160px;
@@ -265,7 +270,7 @@ ul.socials li a.vkontakte:hover {
         position: relative;
         z-index: 10;
     }
-    #header .logo_container .logo {
+    #header .logo_container .perspective .logo {
         display: table-cell;
         vertical-align: middle;
         width: 180px;
@@ -292,29 +297,30 @@ ul.socials li a.vkontakte:hover {
         -o-transform-style: preserve-3d;
         transform-style: preserve-3d;   /* указываем, что дочерние элементы находятся в 3D пространстве */
     }
-    #header .logo_container .logo .front {
+    #header .logo_container .perspective .logo .front {
         margin: 0;
         line-height: 0;
         padding: 0;
         display: inline-block;
     }
-    #header .logo_container .logo img {
+    #header .logo_container .perspective .logo img {
         display: inline-block;
         width: 160px;
     }
-    #header .logo_container:hover .logo {
+    #header .logo_container:hover .perspective .logo {
         -webkit-transform: rotateY( 360deg );
         -moz-transform: rotateY( 360deg );
         -ms-transform: rotateY( 360deg );
         -o-transform: rotateY( 360deg );
         transform: rotateY( 360deg );
     }
-    #header .logo_container .logo + a {
+    #header .logo_container .perspective + a {
         position: absolute;
-        width: 100%;
-        height: 100%;
+        width: 180px;
+        height: 160px;
         top: 0;
         left: 0;
+        z-index: 100;
     }
     #header .logo_container .logo + a:visited,
     #header .logo_container .logo + a:active,
@@ -1983,6 +1989,7 @@ ul.round {
 #place-list .item .placelogo {
     margin-bottom: 20px;
     width: 100%;
+    position: relative;
 }
 #place-list .item .description {
     width: 100%;
@@ -2007,7 +2014,7 @@ ul.round {
     position: relative;
     z-index: 10;
 }
-#place-list .logo_container a.logo {
+#place-list .logo_container .logo {
     display: table-cell;
     vertical-align: middle;
     width: 180px;
@@ -2034,20 +2041,28 @@ ul.round {
     -o-transform-style: preserve-3d;
     transform-style: preserve-3d;   /* указываем, что дочерние элементы находятся в 3D пространстве */
 }
-#place-list .logo_container a.logo .front {
+#place-list .logo_container .logo .front {
     margin: 0;
     line-height: 0;
     padding: 0;
     display: inline-block;
 }
-#place-list .logo_container a.logo img {
+#place-list .logo_container .logo img {
     display: inline-block;
     width: 160px;
 }
-#place-list .logo_container:hover a.logo {
+#place-list .placelogo:hover .logo {
     -webkit-transform: rotateY( 360deg );
     -moz-transform: rotateY( 360deg );
     -ms-transform: rotateY( 360deg );
     -o-transform: rotateY( 360deg );
     transform: rotateY( 360deg );
+}
+#place-list .logo_container + a {
+    position: absolute;
+    width: 180px;
+    height: 160px;
+    top: 0;
+    left: 0;
+    z-index: 100;
 }
