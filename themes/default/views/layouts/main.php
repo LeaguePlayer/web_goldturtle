@@ -33,26 +33,28 @@
 	<body <?php $this->is_home() ? print 'class="background"' : print '';?>>
 		<header id="header" class="<?php if ($this->currentPage == 'main') echo 'h_main'; ?>">
 			<section class="fix-width top">
+                <?php
+                    $getPlace = ( $this->place['alias'] !== 'restourant' ) ? array('place'=>$this->place['alias']) : array();
+                ?>
 				<div class="logo_container">
-					<a href="<?php echo $this->createUrl('site/index', array('place'=>$this->place['alias'])); ?>" class="logo">
-						<img src="<?php echo $this->place['logo']; ?>" alt="">
-					</a>
+                    <span class="logo"><img src="<?php echo $this->place['logo']; ?>" alt=""></span>
+					<a href="<?php echo $this->createUrl('site/index', $getPlace); ?>"></a>
 				</div>
 				<div class="h-content">
 					<div class="city gray">Тюмень</div>
 
 					<ul class="main_menu">
-						<li <?php if ($this->currentPage == 'main') echo "class='current'"; ?>><a <?php if ($this->currentPage != 'main') echo "href='".$this->createUrl('site/index', array('place'=>$this->place['alias']))."'"; ?>>Главная</a></li>
+						<li <?php if ($this->currentPage == 'main') echo "class='current'"; ?>><a <?php if ($this->currentPage != 'main') echo "href='".$this->createUrl('site/index', $getPlace)."'"; ?>>Главная</a></li>
 						<li class="separator"></li>
-						<li <?php if ($this->currentPage == 'about') echo "class='current'"; ?>><a <?php if ($this->currentPage != 'about') echo "href='".Pages::getUrlByAlias('about', $this->place)."'"; ?>>О нас</a></li>
+						<li <?php if ($this->currentPage == 'about') echo "class='current'"; ?>><a <?php if ($this->currentPage != 'about') echo "href='".Pages::getUrlByAlias('about')."'"; ?>>О нас</a></li>
 						<li class="separator"></li>
-						<li <?php if ($this->currentPage == 'contacti') echo "class='current'"; ?>><a <?php if ($this->currentPage != 'contacti') echo "href='".Pages::getUrlByAlias('contacti', $this->place)."'"; ?>>Контакты</a></li>
+						<li <?php if ($this->currentPage == 'contacti') echo "class='current'"; ?>><a <?php if ($this->currentPage != 'contacti') echo "href='".Pages::getUrlByAlias('contacti')."'"; ?>>Контакты</a></li>
 						<li class="separator"></li>
-						<li <?php if ($this->currentPage == 'jobs') echo "class='current'"; ?>><a <?php if ($this->currentPage != 'jobs') echo "href='".$this->createUrl('/jobs/index', $this->place)."'"; ?>>Вакансии</a></li>
+						<li <?php if ($this->currentPage == 'jobs') echo "class='current'"; ?>><a <?php if ($this->currentPage != 'jobs') echo "href='".$this->createUrl('/jobs/index', array('place'=>$this->place['alias']))."'"; ?>>Вакансии</a></li>
 						<li class="separator"></li>
-						<li <?php if ($this->currentPage == 'banners') echo "class='current'"; ?>><a <?php if ($this->currentPage != 'banners') echo "href='".Banners::listUrl($this->place)."'"; ?>>Реклама</a></li>
+						<li <?php if ($this->currentPage == 'banners') echo "class='current'"; ?>><a <?php if ($this->currentPage != 'banners') echo "href='".Banners::listUrl()."'"; ?>>Реклама</a></li>
 						<li class="separator"></li>
-						<li <?php if ($this->currentPage == 'partners') echo "class='current'"; ?>><a <?php if ($this->currentPage != 'partners') echo "href='".$this->createUrl('/partners/index', array('place'=>$this->place['alias']))."'"; ?>>Партнеры</a></li>
+						<li <?php if ($this->currentPage == 'partners') echo "class='current'"; ?>><a <?php if ($this->currentPage != 'partners') echo "href='".$this->createUrl('/partners/index', $getPlace)."'"; ?>>Партнеры</a></li>
 					</ul>
 
 					<div class="clear"></div>

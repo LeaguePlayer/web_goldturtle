@@ -265,7 +265,7 @@ ul.socials li a.vkontakte:hover {
         position: relative;
         z-index: 10;
     }
-    #header .logo_container a.logo {
+    #header .logo_container .logo {
         display: table-cell;
         vertical-align: middle;
         width: 180px;
@@ -292,22 +292,34 @@ ul.socials li a.vkontakte:hover {
         -o-transform-style: preserve-3d;
         transform-style: preserve-3d;   /* указываем, что дочерние элементы находятся в 3D пространстве */
     }
-    #header .logo_container a.logo .front {
+    #header .logo_container .logo .front {
         margin: 0;
         line-height: 0;
         padding: 0;
         display: inline-block;
     }
-    #header .logo_container a.logo img {
+    #header .logo_container .logo img {
         display: inline-block;
         width: 160px;
     }
-    #header .logo_container:hover a.logo {
+    #header .logo_container:hover .logo {
         -webkit-transform: rotateY( 360deg );
         -moz-transform: rotateY( 360deg );
         -ms-transform: rotateY( 360deg );
         -o-transform: rotateY( 360deg );
         transform: rotateY( 360deg );
+    }
+    #header .logo_container .logo + a {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+    }
+    #header .logo_container .logo + a:visited,
+    #header .logo_container .logo + a:active,
+    #header .logo_container .logo + a:hover {
+        outline: none;
     }
 	#header .top {
 		height: 110px;

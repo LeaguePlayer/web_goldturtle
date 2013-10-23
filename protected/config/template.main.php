@@ -8,7 +8,7 @@
 
 return array(
 	'basePath'=>dirname(__FILE__).DIRECTORY_SEPARATOR.'..',
-	'name'=>'Золотая черепаха',
+	'name'=>'Новый сайт',
 	'language' => 'ru',
 	'theme'=>'default',
 	// preloading 'log' component
@@ -61,19 +61,24 @@ return array(
 			'showScriptName'=>false,
 			'urlFormat'=>'path',
 			'rules'=>array(
-				'admin'=>'admin/start/index',
-				'<events_type:news|chronicle>'=>'events/index',
-				'page/<alias:\w+>'=>'pages/view',
-				'<controller:\w+>'=>'<controller>/index',
-				'<controller:\w+>/<id:\d+>'=>'<controller>/view',
-				'<controller:\w+>/<action:\w+>/<id:\d+>'=>'<controller>/<action>',
-				'<controller:\w+>/<action:\w+>'=>'<controller>/<action>',
+                '<place:bar|sofa>'=>'site/index',
+                '<place:bar|sofa>/<events_type:news|chronicle>'=>'events/index',
+                '<place:bar|sofa>/<controller:\w+>'=>'<controller>',
+                '<place:bar|sofa>/<controller:\w+>'=>'<controller>/index',
+                '<place:bar|sofa>/<controller:\w+>/<id:\d+>'=>'<controller>/view',
+                '<place:bar|sofa>/<controller:\w+>/<action:\w+>/<id:\d+>'=>'<controller>/<action>',
+                '<place:bar|sofa>/<controller:\w+>/<action:\w+>'=>'<controller>/<action>',
+                '/'=>'site/index',
+                '<events_type:news|chronicle>'=>'events/index',
+                'page/<alias:\w+>'=>'pages/view',
+                'gii'=>'gii',
+                'admin'=>'admin/start/index',
 			),
 		),
 		'date' => array(
 			'class'=>'application.components.Date',
 			//And integer that holds the offset of hours from GMT e.g. 4 for GMT +4
-			'offset' => 6,
+			'offset' => 0,
 		),
 		/*'db'=>array(
 			'connectionString' => 'sqlite:'.dirname(__FILE__).'/../data/testdrive.db',
@@ -81,10 +86,10 @@ return array(
 		// uncomment the following to use a MySQL database
 		
 		'db'=>array(
-			'connectionString' => 'mysql:host=localhost;dbname=***',
+			'connectionString' => 'mysql:host=localhost;dbname=turtle',
 			'emulatePrepare' => true,
-			'username' => '***',
-			'password' => '***',
+			'username' => 'turtle',
+			'password' => 'qwe123',
 			'charset' => 'utf8',
 			'tablePrefix' => 'tbl_',
 		),
@@ -111,8 +116,5 @@ return array(
 
 	// application-level parameters that can be accessed
 	// using Yii::app()->params['paramName']
-	'params'=>array(
-		// this is used in contact page
-		'adminEmail'=>'webmaster@example.com',
-	),
+	'params'=>array(),
 );

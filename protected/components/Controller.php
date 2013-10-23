@@ -68,30 +68,90 @@ class Controller extends CController
     public function beforeAction($action)
     {
         // Определение текущего заведения
-        $requestPlaceAlias = Yii::app()->request->getQuery('place');
+
+
+//        $cookie = Yii::app()->request->cookies['CURRENT_PLACE'];
+//        $cachePlace = CJSON::decode($cookie->value);
+//        $cacheEqualRequest = ($requestPlaceAlias === $cachePlace['alias']);
+//
+//
+//        if ( isset($cookie) && !$cacheEqualRequest && empty($requestPlaceAlias) ) {
+//            $requestPlaceAlias = $cachePlace['alias'];
+//        }
+//
+//        var_dump($cacheEqualRequest, $requestPlaceAlias, $this->id); die();
+//
+//        if ( empty($requestPlaceAlias) )
+//            $requestPlaceAlias = 'restourant';
+//
+//        $isPlacePage = $this->route === 'site/place';
+//
+//        if ( !$isPlacePage && !$cacheEqualRequest ) {
+//
+//        }
+
+
+
+
+
+
+
+
+
+
+
+        // 1) Везде пусто
+        $requestPlace = Yii::app()->request->getQuery('place');
         $cookie = Yii::app()->request->cookies['CURRENT_PLACE'];
-        $cachePlace = CJSON::decode($cookie->value);
 
-        $isPlacePage = $this->route === 'site/place';
-        $cacheEqualRequest = isset($cookie) && !empty($requestPlaceAlias) && ($requestPlaceAlias === $cachePlace['alias']);
+        $alias = '';
 
-        if ( !$isPlacePage && !$cacheEqualRequest ) {
-            if ( !$requestPlaceAlias )
-                $place = Places::model()->find();
-            else
-                $place = Places::model()->findByAttributes(array('alias'=>$requestPlaceAlias));
-            if ( !$place ) {
-                $this->redirect('/site/place');
+        if ( !isset($cookie) ) {
+            if ( empty($requestPlace) ) {
+                $alias = 'restourant';
+            } else {
+                $alias = $requestPlace;
             }
-            $placeState = array();
-            $placeState['id'] = $place->id;
-            $placeState = $place->attributes;
-            $placeState['logo'] = $place->getThumb('medium');
-            $cookie = new CHttpCookie('CURRENT_PLACE', CJSON::encode($placeState));
-            Yii::app()->request->cookies['CURRENT_PLACE'] = $cookie;
+            $cookiePlace = $this->savePlaceToCookie($alias);
+        } else {
+            $cookiePlace = CJSON::decode($cookie->value);
+            if ( empty($requestPlace) ) {
+                $alias = $cookiePlace['alias'];
+                if ( $this->route === 'site/index' ) {
+                    $alias = 'restourant';
+                    if ( $alias !== $cookiePlace['alias'] ) {
+                        $cookiePlace = $this->savePlaceToCookie($alias);
+                    }
+                }
+            } else if ( $requestPlace !== $cookiePlace['alias'] ) {
+                $alias = $requestPlace;
+                $cookiePlace = $this->savePlaceToCookie($alias);
+            }
         }
-        $this->place = CJSON::decode($cookie->value);
+
+        $this->place = $cookiePlace;
+
+
+        //var_dump($this->place, $cookiePlace); die();
+        //$this->place = $this->savePlaceToCookie($requestPlace);
+
+
         return parent::beforeAction($action);
+    }
+
+    protected function savePlaceToCookie($alias)
+    {
+        $place = Places::model()->findByAttributes(array('alias'=>$alias));
+        if ( !$place ) {
+            $this->redirect('/site/place');
+        }
+        $placeState = array();
+        $placeState['id'] = $place->id;
+        $placeState = $place->attributes;
+        $placeState['logo'] = $place->getThumb('medium');
+        $cookie = new CHttpCookie('CURRENT_PLACE', CJSON::encode($placeState));
+        Yii::app()->request->cookies['CURRENT_PLACE'] = $cookie;
+        return CJSON::decode($cookie->value);
     }
 
 	//Get Clip

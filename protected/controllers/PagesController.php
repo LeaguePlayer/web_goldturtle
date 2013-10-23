@@ -24,7 +24,6 @@ class PagesController extends Controller
 			),
 		);
 	}
-
 	
 	public function actionView($alias = null)
 	{
@@ -38,7 +37,7 @@ class PagesController extends Controller
 		} else {
 			$model = Pages::model()->findByAttributes(array('alias'=>$alias), $criteria);
 			if ( $model === null ) {
-				throw new CHttpException(404, 'Указанная страница ненайдена');
+				throw new CHttpException(404, 'Указанная страница не найдена');
 			}
 		}
 		$this->title = $model->title;

@@ -163,12 +163,18 @@ class Events extends EActiveRecord
 	
 	public static function getNewsUrl($place)
 	{
-		return Yii::app()->urlManager->createUrl('/events/index', array('events_type' => 'news', 'place'=>$place['alias']));
+        $get = array('events_type' => 'news');
+        if ($place['alias'] !== 'restourant')
+            $get['place'] = $place['alias'];
+		return Yii::app()->urlManager->createUrl('/events/index', $get);
 	}
 	
 	public static function getChroniclesUrl($place)
 	{
-		return Yii::app()->urlManager->createUrl('/events/index', array('events_type' => 'chronicle', 'place'=>$place['alias']));
+        $get = array('events_type' => 'chronicle');
+        if ($place['alias'] !== 'restourant')
+            $get['place'] = $place['alias'];
+		return Yii::app()->urlManager->createUrl('/events/index', $get);
 	}
 	
 	public static function lastNews($place_id, $limit = 5)
@@ -209,7 +215,10 @@ class Events extends EActiveRecord
         } else {
             $alias = $place['alias'];
         }
-		return Yii::app()->urlManager->createUrl('events/view', array('id' => $this->id, 'place'=>$alias));
+        $get = array('id' => $this->id);
+        if ($alias !== 'restourant')
+            $get['place'] = $alias;
+		return Yii::app()->urlManager->createUrl('events/view', $get);
 	}
 	
 	private $_dateArray;

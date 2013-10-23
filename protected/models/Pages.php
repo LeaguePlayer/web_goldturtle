@@ -99,16 +99,13 @@ class Pages extends EActiveRecord
 		return parent::beforeSave();
 	}
 	
-	public static function getUrlByAlias($alias, $place)
+	public static function getUrlByAlias($alias)
 	{
-		return Yii::app()->urlManager->createUrl('/pages/view', array('alias'=>$alias, 'place'=>$place['alias']));
+		return Yii::app()->urlManager->createUrl('/pages/view', array('alias'=>$alias));
 	}
 	
-	public function getViewUrl($place = false)
+	public function getViewUrl()
 	{
-        if ( !$place )
-		    return Yii::app()->urlManager->createUrl('/pages/view', array('alias'=>$this->alias));
-        else
-		    return Yii::app()->urlManager->createUrl('/pages/view', array('alias'=>$this->alias, 'place'=>$place['alias']));
+        return Yii::app()->urlManager->createUrl('/pages/view', array('alias'=>$this->alias));
 	}
 }
