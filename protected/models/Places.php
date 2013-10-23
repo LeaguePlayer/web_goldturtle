@@ -118,6 +118,7 @@ class Places extends EActiveRecord
 
     public function getChangeUrl()
     {
-        return Yii::app()->urlManager->createUrl('/site/place', array('select'=>$this->alias));
+        $get = ( $this->alias === 'restourant' ) ? array() : array('place'=>$this->alias);
+        return Yii::app()->urlManager->createUrl('/site/index', $get);
     }
 }

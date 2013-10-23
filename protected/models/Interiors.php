@@ -113,7 +113,16 @@ class Interiors extends EActiveRecord
 
 	public function getViewUrl($place)
 	{
-		return Yii::app()->urlManager->createUrl('/interiors/view', array('id'=>$this->id, 'place'=>$place['alias']));
+        if (!$place) {
+            $place = $this->place;
+            $alias = $place->alias;
+        } else {
+            $alias = $place['alias'];
+        }
+        $get = array('id' => $this->id);
+        if ($alias !== 'restourant')
+            $get['place'] = $alias;
+		return Yii::app()->urlManager->createUrl('/interiors/view', $get);
 	}
 	
 	public function getCountPhotos()

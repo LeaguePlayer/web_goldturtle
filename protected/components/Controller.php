@@ -68,39 +68,6 @@ class Controller extends CController
     public function beforeAction($action)
     {
         // Определение текущего заведения
-
-
-//        $cookie = Yii::app()->request->cookies['CURRENT_PLACE'];
-//        $cachePlace = CJSON::decode($cookie->value);
-//        $cacheEqualRequest = ($requestPlaceAlias === $cachePlace['alias']);
-//
-//
-//        if ( isset($cookie) && !$cacheEqualRequest && empty($requestPlaceAlias) ) {
-//            $requestPlaceAlias = $cachePlace['alias'];
-//        }
-//
-//        var_dump($cacheEqualRequest, $requestPlaceAlias, $this->id); die();
-//
-//        if ( empty($requestPlaceAlias) )
-//            $requestPlaceAlias = 'restourant';
-//
-//        $isPlacePage = $this->route === 'site/place';
-//
-//        if ( !$isPlacePage && !$cacheEqualRequest ) {
-//
-//        }
-
-
-
-
-
-
-
-
-
-
-
-        // 1) Везде пусто
         $requestPlace = Yii::app()->request->getQuery('place');
         $cookie = Yii::app()->request->cookies['CURRENT_PLACE'];
 
@@ -130,12 +97,6 @@ class Controller extends CController
         }
 
         $this->place = $cookiePlace;
-
-
-        //var_dump($this->place, $cookiePlace); die();
-        //$this->place = $this->savePlaceToCookie($requestPlace);
-
-
         return parent::beforeAction($action);
     }
 

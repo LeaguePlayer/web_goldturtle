@@ -44,15 +44,18 @@
 		</script>
 	</section>
 
+    <?php
+        $getPlace = ( $this->place['alias'] !== 'restourant' ) ? array('place'=>$this->place['alias']) : array();
+    ?>
 	<nav class="navigation">
 		<ul class="nav_menu">
-			<li><a href="<?php echo Pages::getUrlByAlias('about', $this->place); ?>" class="about">О ресторане</a></li>
-			<li><a href="<?php echo $this->createUrl('/menu/index', array('place'=>$this->place['alias'])); ?>" class="menu">Меню</a></li>
-			<li><a href="<?php echo $this->createUrl('/employees/index', array('place'=>$this->place['alias'])); ?>" class="personal">Команда</a></li>
-			<li><a href="<?php echo $this->createUrl('/interiors/index', array('place'=>$this->place['alias'])); ?>" class="interior">Интерьер</a></li>
+			<li><a href="<?php echo Pages::getUrlByAlias('about'); ?>" class="about">О ресторане</a></li>
+			<li><a href="<?php echo $this->createUrl('/menu/index', $getPlace); ?>" class="menu">Меню</a></li>
+			<li><a href="<?php echo $this->createUrl('/employees/index'); ?>" class="personal">Команда</a></li>
+			<li><a href="<?php echo $this->createUrl('/interiors/index', $getPlace); ?>" class="interior">Интерьер</a></li>
 			<li><a href="<?php echo Events::getNewsUrl($this->place); ?>" class="news">Новости</a></li>
 			<li><a href="<?php echo Events::getChroniclesUrl($this->place); ?>" class="chronic">Светская хроника</a></li>
-			<li><a href="<?php echo $this->createUrl('/dishes/index', array('place'=>$this->place['alias'])); ?>" class="photo">Фото блюд</a></li>
+			<li><a href="<?php echo $this->createUrl('/dishes/index', $getPlace); ?>" class="photo">Фото блюд</a></li>
 		</ul>
 	</nav>
 <?php $this->endClip(); ?>

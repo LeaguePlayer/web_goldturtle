@@ -113,6 +113,9 @@ class Menu extends EActiveRecord
         } else {
             $alias = $place['alias'];
         }
-		return Yii::app()->urlManager->createUrl('/menu/view', array('id'=>$this->id, 'place'=>$place['alias']));
+        $get = array('id' => $this->id);
+        if ($alias !== 'restourant')
+            $get['place'] = $alias;
+		return Yii::app()->urlManager->createUrl('/menu/view', $get);
 	}
 }
