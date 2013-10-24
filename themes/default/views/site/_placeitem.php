@@ -2,10 +2,11 @@
 <div class="item">
     <div class="placelogo">
         <div class="logo_container">
-            <a class="logo" href="<?php echo $data->getChangeUrl(); ?>">
+            <span class="logo">
                 <img src="<?php echo $data->getThumb('medium'); ?>" alt="">
-            </a>
+            </span>
         </div>
+        <a href="<?php echo $data->getChangeUrl(); ?>"></a>
     </div>
     <div class="description">
         <h3><a href="<?php echo $data->getChangeUrl(); ?>"><?php echo $data->title; ?></a></h3>

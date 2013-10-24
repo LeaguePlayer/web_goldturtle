@@ -152,27 +152,8 @@ class SiteController extends Controller
         $this->render('order', array('model'=>$model));
     }
 
-    public function actionPlace($select = false)
+    public function actionPlace()
     {
-        $this->layout = '//layouts/col_2';
-        if ( $select ) {
-            if ( is_numeric($select) ) {
-                $place = Places::model()->findByPk($select);
-            } else {
-                $place = Places::model()->findByAttributes(array('alias'=>$select));
-            }
-            if ( !$place ) {
-                throw new CHttpException(404, 'Page Not Found');
-            }
-            $placeState = array();
-            $placeState['id'] = $place->id;
-            $placeState = $place->attributes;
-            $placeState['logo'] = $place->getThumb('medium');
-            $cookie = new CHttpCookie('CURRENT_PLACE', CJSON::encode($placeState));
-            Yii::app()->request->cookies['CURRENT_PLACE'] = $cookie;
-            $this->redirect($this->createUrl('site/index', array('place'=>$place->alias)));
-        }
-
         $criteria = new CDbCriteria;
         $criteria->addCondition('status=:status');
         $criteria->params[':status'] = Events::STATUS_PUBLISH;
