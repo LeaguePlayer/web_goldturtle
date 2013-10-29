@@ -164,6 +164,8 @@ ul.socials li a {
 	width: 24px;
 	height: 24px;
 	background: url('../img/sprites.png') no-repeat;
+    text-indent: -100px;
+    overflow: hidden;
 }
 ul.socials li a.twitter {
 	background-position: -154px -44px;
@@ -1029,6 +1031,11 @@ ul.socials li a.vkontakte:hover {
 #footer {
 	padding: 26px 0;
 	overflow: hidden;
+}
+#footer .content {
+    display: inline-block;
+    vertical-align: middle;
+    width: 830px;
 }
 #footer.bordered {
 	border-top: 1px solid #f6f6f6;

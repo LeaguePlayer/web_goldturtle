@@ -53,6 +53,7 @@ $menuItems = array(
         )),
     )),
     array('label'=>'Метаданные страниц', 'url'=>'/admin/metadata/list'),
+    array('label'=>'Компоненты страниц', 'url'=>'/admin/pageparts/list'),
 );
 
 /*

@@ -103,19 +103,9 @@
 		<?php endif; ?>
 
 		<footer id="footer" class="fix-width center">
-			<p class="reserved">(с) Ресторан Золотая Черепаха</p>
-			<ul class="f_menu">
-				<li><a href="/">Главная</a></li>
-				<li><a href="<?php echo Pages::getUrlByAlias('about'); ?>">О нас</a></li>
-				<li><a href="<?php echo Pages::getUrlByAlias('contacti'); ?>">Контакты</a></li>
-				<li><a href="<?php echo Banners::listUrl(); ?>">Реклама</a></li>
-				<li><a href="<?php echo $this->createUrl('/partners/index'); ?>">Партнеры</a></li>
-			</ul>
-			<ul class="socials">
-				<!-- <li><a class="twitter" href="#" target="_blank"></a></li> -->
-				<li><a class="facebook" href="https://www.facebook.com/pages/Ресторан-Бар-Золотая-Черепаха/344894012283405" target="_blank"></a></li>
-				<li><a class="vkontakte" href="http://vk.com/zolotayacherepaha" target="_blank"></a></li>
-			</ul>
+            <div class="content">
+                <?php echo $this->footer; ?>
+            </div>
 			<p class="amobile"><a href="http://amobile-studio.ru/"></a><span>Всегда только лучшие идеи</span></p>
 		</footer>
 	</body>

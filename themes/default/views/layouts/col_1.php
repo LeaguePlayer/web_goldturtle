@@ -49,7 +49,7 @@
     ?>
 	<nav class="navigation">
 		<ul class="nav_menu">
-			<li><a href="<?php echo Pages::getUrlByAlias('about'); ?>" class="about">О ресторане</a></li>
+			<li><a href="<?php echo Pages::getUrlByAlias('about'); ?>" class="about">О нас</a></li>
 			<li><a href="<?php echo $this->createUrl('/menu/index', $getPlace); ?>" class="menu">Меню</a></li>
 			<li><a href="<?php echo $this->createUrl('/employees/index'); ?>" class="personal">Команда</a></li>
 			<li><a href="<?php echo $this->createUrl('/interiors/index', $getPlace); ?>" class="interior">Интерьер</a></li>
