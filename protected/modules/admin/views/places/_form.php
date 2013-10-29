@@ -21,6 +21,10 @@
 		<?php echo $form->error($model, 'html_description'); ?>
 	</div>
 
+    <?php echo $form->textFieldControlGroup($model,'meta_title',array('class'=>'span8', 'maxlength'=>256)); ?>
+    <?php echo $form->textAreaControlGroup($model,'meta_description',array('class'=>'span8', 'rows'=>10)); ?>
+    <?php echo $form->textAreaControlGroup($model,'meta_keywords',array('class'=>'span8', 'rows'=>6)); ?>
+
 	<?php echo $form->dropDownListControlGroup($model, 'status', Places::getStatusAliases(), array('class'=>'span8', 'displaySize'=>1)); ?>
 
 	<div class="form-actions">

@@ -29,7 +29,7 @@ class Pages extends EActiveRecord
 			array('place_id, status, sort, create_time, update_time', 'numerical', 'integerOnly'=>true),
 			array('title, alias', 'length', 'max'=>256),
 			array('alias', 'match', 'pattern'=>'/^[\w]+$/', 'message'=>'Идентификатор не должен содержать русских символов, спецсимволов и пробелов'),
-			array('html_content', 'safe'),
+			array('html_content, meta_description, meta_keywords', 'safe'),
 			// The following rule is used by search().
 			array('id, title, alias, html_content, place_id, status, sort, create_time, update_time', 'safe', 'on'=>'search'),
 		);
@@ -72,6 +72,8 @@ class Pages extends EActiveRecord
 		$criteria->compare('html_content',$this->html_content,true);
 		$criteria->compare('place_id',$this->place_id);
 		$criteria->compare('status',$this->status);
+		$criteria->compare('meta_description',$this->meta_description);
+		$criteria->compare('meta_keywords',$this->meta_keywords);
 		$criteria->compare('sort',$this->sort);
 		$criteria->compare('create_time',$this->create_time);
 		$criteria->compare('update_time',$this->update_time);
@@ -92,7 +94,8 @@ class Pages extends EActiveRecord
 		return 'Страницы';
 	}
 	
-	public function beforeSave() {
+	public function beforeSave()
+    {
 		if ( empty($this->alias) ) {
 			$this->alias = SiteHelper::translit($this->title);
 		}

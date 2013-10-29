@@ -44,7 +44,9 @@ class MenuController extends Controller
 			'criteria' => $criteria,
 			'pagination' => false
 		));
-		
+        $this->title = $model->name.' | '.$this->place['meta_title'];
+        Yii::app()->clientScript->registerMetaTag($model->meta_keywords, 'Keywords');
+        Yii::app()->clientScript->registerMetaTag($model->meta_description, 'Description');
 		$this->render('view',array(
 			'model' => $model,
 			'othersMenu' => $othersMenu,
@@ -65,6 +67,10 @@ class MenuController extends Controller
 				'pageSize' => 10
 			)
 		));
+        $metadata = Metadata::fetch(Metadata::POST_TYPE_MENU);
+        $this->title = $metadata->meta_title.' | '.$this->place['meta_title'];
+        Yii::app()->clientScript->registerMetaTag($metadata->meta_keywords, 'Keywords');
+        Yii::app()->clientScript->registerMetaTag($metadata->meta_description, 'Description');
 		$this->render('index',array(
 			'dataProvider'=>$dataProvider,
 		));

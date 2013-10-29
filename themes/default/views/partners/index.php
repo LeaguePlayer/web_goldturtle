@@ -7,7 +7,7 @@
 
 <?php $this->widget('zii.widgets.CListView', array(
 	'dataProvider'=>$dataProvider,
-	'itemsCssClass'=>'partners-list stalactite',
+	'itemsCssClass'=>'partners-list',
 	'itemView'=>'_view',
 	'template'=>'{items}',
 )); ?>

@@ -42,6 +42,8 @@ class m130806_031346_events extends CDbMigration
 			'sort' => 'integer COMMENT \'Вес для сортировки\'',
             'create_time' => 'integer COMMENT \'Дата создания\'',
             'update_time' => 'integer COMMENT \'Дата последнего редактирования\'',
+            'meta_description' => "text",
+            'meta_keywords' => "text",
         ),
         'ENGINE=MyISAM');
     }

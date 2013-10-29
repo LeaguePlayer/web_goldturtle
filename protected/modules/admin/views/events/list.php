@@ -33,13 +33,13 @@ $this->menu=array(
 			'name'=>'type',
 			'type'=>'raw',
 			'value'=>'Events::getTypes($data->type)',
-			'filter'=>array(Events::getTypes())
+			'filter'=>Events::getTypes()
 		),
 		array(
 			'name'=>'status',
 			'type'=>'raw',
 			'value'=>'Events::getStatusAliases($data->status)',
-			'filter'=>array(Events::getStatusAliases())
+			'filter'=>Events::getStatusAliases()
 		),
 		'sort',
 		array(

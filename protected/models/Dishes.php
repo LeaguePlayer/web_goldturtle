@@ -28,6 +28,7 @@ class Dishes extends EActiveRecord
 			array('place_id, title', 'required'),
 			array('gallery, place_id, status, sort, create_time, update_time', 'numerical', 'integerOnly'=>true),
 			array('title, description', 'length', 'max'=>256),
+			array('meta_description, meta_keywords', 'safe'),
 			// The following rule is used by search().
 			array('id, title, description, gallery, place_id, status, sort, create_time, update_time', 'safe', 'on'=>'search'),
 		);

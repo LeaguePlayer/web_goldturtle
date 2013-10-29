@@ -26,6 +26,7 @@ class Interiors extends EActiveRecord
 		return array(
 			array('place_id, gallery, status, sort, create_time, update_time', 'numerical', 'integerOnly'=>true),
 			array('title', 'length', 'max'=>255),
+			array('meta_keywords, meta_description', 'safe'),
 			// The following rule is used by search().
 			array('id, title, place_id, gallery, status, sort, create_time, update_time', 'safe', 'on'=>'search'),
 		);

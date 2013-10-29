@@ -19,6 +19,9 @@
 		} ?>
 	</div>
 
+    <?php echo $form->textAreaControlGroup($model,'meta_description',array('class'=>'span8', 'rows'=>10)); ?>
+    <?php echo $form->textAreaControlGroup($model,'meta_keywords',array('class'=>'span8', 'rows'=>6)); ?>
+
 	<?php echo $form->dropDownListControlGroup($model, 'status', Interiors::getStatusAliases(), array('class'=>'span8', 'displaySize'=>1)); ?>
 	<div class="form-actions">
 		<?php $this->widget('bootstrap.widgets.TbButton', array(

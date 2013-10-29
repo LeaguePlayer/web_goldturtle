@@ -19,6 +19,9 @@
 		} ?>
 	</div>
 
+    <?php echo $form->textAreaControlGroup($model,'meta_description',array('class'=>'span8', 'rows'=>10)); ?>
+    <?php echo $form->textAreaControlGroup($model,'meta_keywords',array('class'=>'span8', 'rows'=>6)); ?>
+
 	<?php echo $form->dropDownListControlGroup($model, 'place_id', CHtml::listData(Places::model()->findAll(), 'id', 'title'), array('class'=>'span8', 'displaySize'=>1)); ?>
 
 	<?php echo $form->dropDownListControlGroup($model, 'status', Dishes::getStatusAliases(), array('class'=>'span8', 'displaySize'=>1)); ?>

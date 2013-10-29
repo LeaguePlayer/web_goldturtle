@@ -47,7 +47,10 @@ class EventsController extends Controller
 				'pageSize' => 1000,
 			)
 		));
-		
+
+        $this->title = $model->title.' | '.$this->place['meta_title'];
+        Yii::app()->clientScript->registerMetaTag($model->meta_keywords, 'Keywords');
+        Yii::app()->clientScript->registerMetaTag($model->meta_description, 'Description');
 		$this->render('view',array(
 			'model' => $model,
 			'roundData' => $roundData,
@@ -80,6 +83,18 @@ class EventsController extends Controller
 				'pageSize'=>10
 			),
 		));
+        switch ($typeId) {
+            case Events::TYPE_NEWS:
+                $pageType = Metadata::POST_TYPE_NEWS;
+                break;
+            case Events::TYPE_CHRONICLE:
+                $pageType = Metadata::POST_TYPE_CHRONICLES;
+                break;
+        }
+        $metadata = Metadata::fetch($pageType);
+        $this->title = $metadata->meta_title.' | '.$this->place['meta_title'];
+        Yii::app()->clientScript->registerMetaTag($metadata->meta_keywords, 'Keywords');
+        Yii::app()->clientScript->registerMetaTag($metadata->meta_description, 'Description');
 		$this->render('index', array(
 			'type'=>$typeId,
 			'dataProvider'=>$dataProvider,
@@ -88,6 +103,6 @@ class EventsController extends Controller
 	
 	public function actionLoadRoundItem()
 	{
-		$this->renderPartial('_roundItem', array('model' => $model));
+		//$this->renderPartial('_roundItem', array('model' => $model));
 	}
 }

@@ -45,10 +45,14 @@
 			'type' => 'datetime',
 			'options' => array(
 				'controlType' => 'select',
+                'dateFormat'=>'dd-mm-yy',
 			),
 		)); ?>
 		<?php echo $form->error($model, 'public_date'); ?>
 	</div>
+
+    <?php echo $form->textAreaControlGroup($model,'meta_description',array('class'=>'span8', 'rows'=>10)); ?>
+    <?php echo $form->textAreaControlGroup($model,'meta_keywords',array('class'=>'span8', 'rows'=>6)); ?>
 
 	<?php echo $form->dropDownListControlGroup($model, 'status', Events::getStatusAliases(), array('class'=>'span8', 'displaySize'=>1)); ?>
 

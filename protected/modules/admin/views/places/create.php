@@ -1,7 +1,6 @@
 <?php
 $this->breadcrumbs=array(
 	"{$model->translition()}"=>array('list'),
-	'Создание',
 );
 
 $this->menu=array(

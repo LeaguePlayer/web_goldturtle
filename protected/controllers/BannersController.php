@@ -28,14 +28,6 @@ class BannersController extends Controller
 	}
 
 	
-	public function actionView($id)
-	{
-		$this->render('view',array(
-			'model'=>$this->loadModel($id),
-		));
-	}
-
-	
 	public function actionIndex()
 	{
 		$criteria = new CDbCriteria;
@@ -48,6 +40,10 @@ class BannersController extends Controller
 				'pageSize' => 10
 			)
 		));
+        $metadata = Metadata::fetch(Metadata::POST_TYPE_BANNERS);
+        $this->title = $metadata->meta_title;
+        Yii::app()->clientScript->registerMetaTag($metadata->meta_keywords, 'Keywords');
+        Yii::app()->clientScript->registerMetaTag($metadata->meta_description, 'Description');
 		$this->currentPage = 'banners';
 		$this->render('index',array(
 			'dataProvider'=>$dataProvider,

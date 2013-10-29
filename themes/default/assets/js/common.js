@@ -28,7 +28,7 @@ $(document).ready(function() {
 			}
 		});
 	}
-	
+
 	$('.fancy').fancybox();
 	$(".stalactite").stalactite({
 		duration: 200,                        // Duration of animation.
@@ -68,6 +68,12 @@ $(document).ready(function() {
 			bindEvents( $this.inner );
 		}
 	});
+
+    $('.static a').each(function() {
+        var link = $(this);
+        if ( link.find('img') )
+            link.fancybox();
+    });
 	
 	$('.adipoli').adipoli({ startEffect:'overlay', hoverEffect:'foldLeft' });
 	
@@ -130,6 +136,7 @@ var myWidgets = {
 			items = rounder.find('ul.round > li');
 			
 			if ( items.size() <= 2 ) {
+                prevBtn.add(nextBtn).hide();
 				return;
 			}
 			

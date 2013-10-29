@@ -30,7 +30,7 @@ class Employees extends EActiveRecord
 			array('status, sort, create_time, update_time, face_of_day', 'numerical', 'integerOnly'=>true),
 			array('face_of_day', 'in', 'range'=>array(0, 1)),
 			array('fio, position', 'length', 'max'=>256),
-			array('html_quote', 'safe'),
+			array('html_quote, meta_keywords, meta_description', 'safe'),
 			// The following rule is used by search().
 			array('id, image, fio, position, html_quote, status, sort, create_time, update_time', 'safe', 'on'=>'search'),
 		);

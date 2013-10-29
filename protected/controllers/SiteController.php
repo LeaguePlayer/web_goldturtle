@@ -35,9 +35,9 @@ class SiteController extends Controller
 		if ( $slider !== null and $slider->status == Slider::STATUS_PUBLISH ) {
 			$this->sliderManager = $slider->galleryManager->getGallery();
 		}
-        $this->title = Settings::getOption('site_name');
-        Yii::app()->clientScript->registerMetaTag(Settings::getOption('meta_keys'), 'Keywords');
-        Yii::app()->clientScript->registerMetaTag(Settings::getOption('meta_description'), 'Description');
+        $this->title = $this->place['meta_title'];
+        Yii::app()->clientScript->registerMetaTag($this->place['meta_keywords'], 'Keywords');
+        Yii::app()->clientScript->registerMetaTag($this->place['meta_description'], 'Description');
 		$this->render('index');
 	}
 
@@ -53,76 +53,6 @@ class SiteController extends Controller
 			else
 				$this->render('error', $error);
 		}
-	}
-
-	/**
-	 * Displays the contact page
-	 */
-	public function actionContact()
-	{
-		$model=new ContactForm;
-		if(isset($_POST['ContactForm']))
-		{
-			$model->attributes=$_POST['ContactForm'];
-			if($model->validate())
-			{
-				$name='=?UTF-8?B?'.base64_encode($model->name).'?=';
-				$subject='=?UTF-8?B?'.base64_encode($model->subject).'?=';
-				$headers="From: $name <{$model->email}>\r\n".
-					"Reply-To: {$model->email}\r\n".
-					"MIME-Version: 1.0\r\n".
-					"Content-type: text/plain; charset=UTF-8";
-
-				mail(Yii::app()->params['adminEmail'],$subject,$model->body,$headers);
-				Yii::app()->user->setFlash('contact','Thank you for contacting us. We will respond to you as soon as possible.');
-				$this->refresh();
-			}
-		}
-        $this->title = 'Контакты | '.Settings::getOption('site_name');
-		$this->render('contact',array('model'=>$model));
-	}
-
-	/**
-	 * Displays the login page
-	 */
-	public function actionLogin()
-	{
-		$this->layout = '//layouts/simple';
-
-		$model=new LoginForm;
-
-		// if it is ajax validation request
-		if(isset($_POST['ajax']) && $_POST['ajax']==='login-form')
-		{
-			echo CActiveForm::validate($model);
-			Yii::app()->end();
-		}
-
-		// collect user input data
-		if(isset($_POST['LoginForm']))
-		{
-			$model->attributes=$_POST['LoginForm'];
-			// validate user input and redirect to the previous page if valid
-			if($model->validate() && $model->login())
-				$this->redirect(Yii::app()->user->returnUrl);
-		}
-		// display the login form
-		$this->render('login',array('model'=>$model));
-	}
-
-	/**
-	 * Logs out the current user and redirect to homepage.
-	 */
-	public function actionLogout()
-	{
-		Yii::app()->user->logout();
-		$this->redirect(Yii::app()->homeUrl);
-	}
-	
-	public function actionAbout()
-	{
-		$this->layout = '//layouts/col_2';
-		$this->render('about');
 	}
     
     public function actionOrder()
@@ -163,6 +93,10 @@ class SiteController extends Controller
                 'pageSize'=>100
             ),
         ));
+        $metadata = Metadata::fetch(Metadata::POST_TYPE_PLACES);
+        $this->title = $metadata->meta_title;
+        Yii::app()->clientScript->registerMetaTag($metadata->meta_keywords, 'Keywords');
+        Yii::app()->clientScript->registerMetaTag($metadata->meta_description, 'Description');
         $this->render('place', array('dataProvider'=>$dataProvider));
     }
 }

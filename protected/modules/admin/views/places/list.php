@@ -1,9 +1,3 @@
-<?php
-$this->menu=array(
-	array('label'=>'Добавить','url'=>array('create')),
-);
-?>
-
 <h1>Управление <?php echo $model->translition(); ?></h1>
 
 <?php $this->widget('bootstrap.widgets.TbGridView',array(
@@ -38,7 +32,7 @@ $this->menu=array(
 		),
 		array(
 			'class'=>'bootstrap.widgets.TbButtonColumn',
-			'template'=>'{update}{delete}',
+			'template'=>'{update}',
 		),
 	),
 )); ?>

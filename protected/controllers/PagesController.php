@@ -45,7 +45,9 @@ class PagesController extends Controller
 		if ( $alias === 'contacti' ) {
 			$this->renderYandexMap = true;
 		}
-		
+
+        Yii::app()->clientScript->registerMetaTag($model->meta_keywords, 'Keywords');
+        Yii::app()->clientScript->registerMetaTag($model->meta_description, 'Description');
 		$this->render('view',array(
 			'model'=>$model,
 		));

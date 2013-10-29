@@ -27,7 +27,7 @@ class Menu extends EActiveRecord
 			array('place_id, name', 'required'),
 			array('status, sort, create_time, update_time, place_id', 'numerical', 'integerOnly'=>true),
 			array('name', 'length', 'max'=>256),
-			array('html_content', 'safe'),
+			array('html_content, meta_keywords, meta_description', 'safe'),
 			// The following rule is used by search().
 			array('id, name, image, html_content, status, sort, create_time, update_time', 'safe', 'on'=>'search'),
 		);

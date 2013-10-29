@@ -3,6 +3,8 @@
 	<?php $this->widget('application.extensions.banner.BannerWidget'); ?>
 <?php $this->endClip(); ?>
 
+<h1 class="title"><?php echo $model->title; ?></h1>
+
 <div class="static">
 	<?php echo $model->html_content; ?>
 </div>

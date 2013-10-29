@@ -48,7 +48,7 @@ class Events extends EActiveRecord
 			array('title, html_content, place_id, type', 'required'),
 			array('gallery, place_id, type, status, sort, create_time, update_time', 'numerical', 'integerOnly'=>true),
 			array('title', 'length', 'max'=>256),
-			array('description, public_date', 'safe'),
+			array('description, public_date, meta_description, meta_keywords', 'safe'),
 			// The following rule is used by search().
 			array('id, title, image, description, html_content, gallery, place_id, type, public_date, status, sort, create_time, update_time', 'safe', 'on'=>'search'),
 		);
@@ -72,7 +72,7 @@ class Events extends EActiveRecord
 			'description' => 'Краткое описание',
 			'html_content' => 'Контент',
 			'gallery' => 'Галерея',
-			'place_id' => 'Place',
+			'place_id' => 'Ресторан',
 			'type' => 'Новость или хроника',
 			'public_date' => 'Дата проведения',
 			'status' => 'Статус',
@@ -157,7 +157,7 @@ class Events extends EActiveRecord
 
 	public function beforeSave()
 	{
-		$this->public_date = Yii::app()->date->toMysql($this->public_date, false);
+		$this->public_date = date('Y-m-d H:i:s', strtotime($this->public_date));
 		return parent::beforeSave();
 	}
 	
@@ -255,4 +255,10 @@ class Events extends EActiveRecord
 	public function getGallery() {
 		return $this->galleryManager->getGallery();
 	}
+
+    public function afterFind()
+    {
+        parent::afterFind();
+        $this->public_date = date('d-m-Y H:i', strtotime($this->public_date));
+    }
 }

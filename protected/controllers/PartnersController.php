@@ -27,14 +27,6 @@ class PartnersController extends Controller
 	}
 
 	
-	public function actionView($id)
-	{
-		$this->render('view',array(
-			'model'=>$this->loadModel($id),
-		));
-	}
-
-	
 	public function actionIndex()
 	{
 		$criteria = new CDbCriteria;
@@ -46,6 +38,10 @@ class PartnersController extends Controller
 			'pagination' => false
 		));
 		$this->currentPage = 'partners';
+        $metadata = Metadata::fetch(Metadata::POST_TYPE_PARTNERS);
+        $this->title = $metadata->meta_title;
+        Yii::app()->clientScript->registerMetaTag($metadata->meta_keywords, 'Keywords');
+        Yii::app()->clientScript->registerMetaTag($metadata->meta_description, 'Description');
 		$this->render('index',array(
 			'dataProvider'=>$dataProvider,
 		));

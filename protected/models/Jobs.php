@@ -26,7 +26,7 @@ class Jobs extends EActiveRecord
 			array('name', 'required'),
 			array('status, sort, create_time, update_time', 'numerical', 'integerOnly'=>true),
 			array('name', 'length', 'max'=>256),
-			array('html_description', 'safe'),
+			array('html_description, meta_keywords, meta_description', 'safe'),
 			// The following rule is used by search().
 			array('id, name, html_description, status, sort, create_time, update_time', 'safe', 'on'=>'search'),
 		);
