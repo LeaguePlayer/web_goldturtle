@@ -4,6 +4,22 @@
 	'htmlOptions' => array('enctype'=>'multipart/form-data'), 
 )); ?>
 
+    <?php echo $form->dropDownListControlGroup($model, 'type', Events::getTypes(), array('class'=>'span8', 'displaySize'=>1)); ?>
+
+    <div class='control-group'>
+        <?php echo CHtml::activeLabelEx($model, 'event_day'); ?>
+        <?php $this->widget('application.extensions.datetimepicker.BJuiDateTimePicker', array(
+            'model' => $model,
+            'attribute' => 'event_day',
+            'type' => 'datetime',
+            'options' => array(
+                'controlType' => 'select',
+                'dateFormat'=>'dd-mm-yy',
+            ),
+        )); ?>
+        <?php echo $form->error($model, 'event_day'); ?>
+    </div>
+
 	<?php echo $form->textFieldControlGroup($model,'title',array('class'=>'span8','maxlength'=>256)); ?>
 
 	<div class='control-group'>
@@ -34,7 +50,7 @@
 		} ?>
 	</div>
 	<?php echo $form->dropDownListControlGroup($model, 'place_id', CHtml::listData(Places::model()->findAll(), 'id', 'title'), array('class'=>'span8', 'displaySize'=>1)); ?>
-	<?php echo $form->dropDownListControlGroup($model, 'type', Events::getTypes(), array('class'=>'span8', 'displaySize'=>1)); ?>
+
 	
 
 	<div class='control-group'>
@@ -42,7 +58,7 @@
 		<?php $this->widget('application.extensions.datetimepicker.BJuiDateTimePicker', array(
 			'model' => $model,
 			'attribute' => 'public_date',
-			'type' => 'datetime',
+			'type' => 'date',
 			'options' => array(
 				'controlType' => 'select',
                 'dateFormat'=>'dd-mm-yy',
@@ -51,6 +67,7 @@
 		<?php echo $form->error($model, 'public_date'); ?>
 	</div>
 
+    <?php echo $form->textFieldControlGroup($model,'meta_title',array('class'=>'span8', 'rows'=>10)); ?>
     <?php echo $form->textAreaControlGroup($model,'meta_description',array('class'=>'span8', 'rows'=>10)); ?>
     <?php echo $form->textAreaControlGroup($model,'meta_keywords',array('class'=>'span8', 'rows'=>6)); ?>
 

@@ -26,7 +26,7 @@ class Employees extends EActiveRecord
 	public function rules()
 	{
 		return array(
-			array('fio, position', 'required'),
+			array('fio, position, place_id', 'required'),
 			array('status, sort, create_time, update_time, face_of_day', 'numerical', 'integerOnly'=>true),
 			array('face_of_day', 'in', 'range'=>array(0, 1)),
 			array('fio, position', 'length', 'max'=>256),
@@ -40,6 +40,7 @@ class Employees extends EActiveRecord
 	public function relations()
 	{
 		return array(
+            'place'=>array(self::BELONGS_TO, 'Places', 'place_id'),
 		);
 	}
 
@@ -48,6 +49,7 @@ class Employees extends EActiveRecord
 	{
 		return array(
 			'id' => 'ID',
+			'place_id' => 'Привязка к помещению',
 			'image' => 'Фото сотрудника',
 			'fio' => 'ФИО',
 			'position' => 'Должность',
@@ -87,6 +89,7 @@ class Employees extends EActiveRecord
 		$criteria=new CDbCriteria;
 
 		$criteria->compare('id',$this->id);
+		$criteria->compare('place_id',$this->place_id);
 		$criteria->compare('image',$this->image,true);
 		$criteria->compare('fio',$this->fio,true);
 		$criteria->compare('face_of_day',$this->face_of_day,true);

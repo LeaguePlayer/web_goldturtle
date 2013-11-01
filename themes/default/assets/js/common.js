@@ -1,9 +1,11 @@
 $(document).ready(function() {
 	
 	myWidgets.newsRounder().init();
-	
-	if ( $('#slides').size() > 0 ) {
-		$('#slides').slidesjs({
+
+    var mainSlider = $('#slides');
+	if ( mainSlider.size() > 0 ) {
+        var duration = mainSlider.data('duration');
+        mainSlider.slidesjs({
 			width: 940,
 			height: 528,
 			navigation: {
@@ -20,7 +22,7 @@ $(document).ready(function() {
 			play: {
 				active: true,
 				effect: "fade",
-				interval: 3000,
+				interval: duration,
 				auto: true,
 				swap: false,
 				pauseOnHover: false,

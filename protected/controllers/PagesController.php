@@ -40,12 +40,12 @@ class PagesController extends Controller
 				throw new CHttpException(404, 'Указанная страница не найдена');
 			}
 		}
-		$this->title = $model->title;
 		$this->currentPage = $alias;
 		if ( $alias === 'contacti' ) {
 			$this->renderYandexMap = true;
 		}
 
+        $this->title = !empty($model->meta_title) ? $model->meta_title : $model->title;
         Yii::app()->clientScript->registerMetaTag($model->meta_keywords, 'Keywords');
         Yii::app()->clientScript->registerMetaTag($model->meta_description, 'Description');
 		$this->render('view',array(

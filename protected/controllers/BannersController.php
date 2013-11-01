@@ -46,6 +46,7 @@ class BannersController extends Controller
         Yii::app()->clientScript->registerMetaTag($metadata->meta_description, 'Description');
 		$this->currentPage = 'banners';
 		$this->render('index',array(
+            'title' => ($metadata->title) ? $metadata->title : 'Реклама',
 			'dataProvider'=>$dataProvider,
 		));
 	}

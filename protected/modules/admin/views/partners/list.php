@@ -18,6 +18,12 @@ $this->menu=array(
 			'value'=>'TbHtml::imageRounded($data->getThumb("small"))'
 		),
 		'name',
+        array(
+            'name'=>'place_id',
+            'type'=>'raw',
+            'value'=>'$data->place->title',
+            'filter'=>CHtml::listData(Places::model()->findAll(), 'id', 'title')
+        ),
 		array(
 			'name'=>'site',
 			'type'=>'raw',

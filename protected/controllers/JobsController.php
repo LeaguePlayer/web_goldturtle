@@ -45,6 +45,7 @@ class JobsController extends Controller
         Yii::app()->clientScript->registerMetaTag($metadata->meta_keywords, 'Keywords');
         Yii::app()->clientScript->registerMetaTag($metadata->meta_description, 'Description');
 		$this->render('index',array(
+            'title'=>!empty($metadata->title) ? $metadata->title : 'Работа в Тюмени',
 			'dataProvider'=>$dataProvider,
 		));
 	}

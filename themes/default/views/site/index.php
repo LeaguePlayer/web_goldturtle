@@ -1,6 +1,7 @@
+<?php ?>
+
+
 <?php $this->beginClip('r_sidebar'); ?>
-	<?php $this->widget('application.extensions.banner.BannerWidget'); ?>
-	<?php $this->widget('application.extensions.face.FaceOfDayWidget'); ?>
 	<?php $this->widget('application.extensions.reviews.ReviewsWidget'); ?>
 <?php $this->endClip(); ?>
 

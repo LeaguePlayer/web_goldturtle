@@ -43,7 +43,7 @@ class InteriorsController extends Controller
 			'criteria' => $criteria,
 			'pagination' => false
 		));
-        $this->title = $model->title.' | '.$this->place['meta_title'];
+        $this->title = $model->meta_title.' | '.$this->place['meta_title'];
         Yii::app()->clientScript->registerMetaTag($model->meta_keywords, 'Keywords');
         Yii::app()->clientScript->registerMetaTag($model->meta_description, 'Description');
 		$this->render('view',array(
@@ -66,11 +66,13 @@ class InteriorsController extends Controller
 				'pageSize' => 12
 			)
 		));
+        $this->currentPage = 'ineriors';
         $metadata = Metadata::fetch(Metadata::POST_TYPE_INTERIORS);
         $this->title = $metadata->meta_title.' | '.$this->place['meta_title'];
         Yii::app()->clientScript->registerMetaTag($metadata->meta_keywords, 'Keywords');
         Yii::app()->clientScript->registerMetaTag($metadata->meta_description, 'Description');
 		$this->render('index',array(
+            'title'=>!empty($metadata->title) ? $metadata->title : 'Интерьер',
 			'dataProvider'=>$dataProvider,
 		));
 	}

@@ -47,8 +47,8 @@ class Events extends EActiveRecord
 		return array(
 			array('title, html_content, place_id, type', 'required'),
 			array('gallery, place_id, type, status, sort, create_time, update_time', 'numerical', 'integerOnly'=>true),
-			array('title', 'length', 'max'=>256),
-			array('description, public_date, meta_description, meta_keywords', 'safe'),
+			array('title, meta_title', 'length', 'max'=>256),
+			array('description, public_date, event_day, meta_description, meta_keywords', 'safe'),
 			// The following rule is used by search().
 			array('id, title, image, description, html_content, gallery, place_id, type, public_date, status, sort, create_time, update_time', 'safe', 'on'=>'search'),
 		);
@@ -74,7 +74,8 @@ class Events extends EActiveRecord
 			'gallery' => 'Галерея',
 			'place_id' => 'Ресторан',
 			'type' => 'Новость или хроника',
-			'public_date' => 'Дата проведения',
+			'public_date' => 'Дата публикации',
+			'event_day' => 'Дата проведения',
 			'status' => 'Статус',
 			'sort' => 'Вес для сортировки',
 			'create_time' => 'Дата создания',
@@ -158,6 +159,7 @@ class Events extends EActiveRecord
 	public function beforeSave()
 	{
 		$this->public_date = date('Y-m-d H:i:s', strtotime($this->public_date));
+		$this->event_day = date('Y-m-d H:i:s', strtotime($this->event_day));
 		return parent::beforeSave();
 	}
 	
@@ -222,34 +224,34 @@ class Events extends EActiveRecord
 	}
 	
 	private $_dateArray;
-	protected function getDateArray()
+	protected function getDateArray($attribute)
 	{
-		if ($this->_dateArray === null) {
-			$this->_dateArray = explode('.', date('d.m.Y.H.i', strtotime($this->public_date)) );
+		if ($this->_dateArray[$attribute] === null) {
+			$this->_dateArray[$attribute] = explode('.', date('d.m.Y.H.i', strtotime($this->{$attribute})) );
 		}
 		return $this->_dateArray;
 	}
-	public function getPublicDay()
+	public function getDay($attribute)
 	{
-		$dateArray = $this->dateArray;
-		return $dateArray[0];
+        $dateArray = $this->getDateArray($attribute);
+        return $dateArray[$attribute][0];
 	}
-	public function getPublicMonth()
+	public function getMonth($attribute)
 	{
-		$dateArray = $this->dateArray;
-		return SiteHelper::russianMonth($dateArray[1]);
+        $dateArray = $this->getDateArray($attribute);
+		return SiteHelper::russianMonth($dateArray[$attribute][1]);
 	}
-	public function getPublicYear()
+	public function getYear($attribute)
 	{
-		$dateArray = $this->dateArray;
-		return $dateArray[2];
+        $dateArray = $this->getDateArray($attribute);
+		return $dateArray[$attribute][2];
 	}
-	public function getPublicTime()
+	public function getTime($attribute)
 	{
-		$dateArray = $this->dateArray;
-		if (($dateArray[3] == 0) and ($dateArray[4] == 0))
+        $dateArray = $this->getDateArray($attribute);
+		if (($dateArray[$attribute][3] == 0) and ($dateArray[$attribute][4] == 0))
 			return null;
-		return $dateArray[3].'.'.$dateArray[4];
+		return $dateArray[$attribute][3].'.'.$dateArray[$attribute][4];
 	}
 	
 	public function getGallery() {
@@ -259,6 +261,7 @@ class Events extends EActiveRecord
     public function afterFind()
     {
         parent::afterFind();
-        $this->public_date = date('d-m-Y H:i', strtotime($this->public_date));
+        $this->public_date = date('d-m-Y', strtotime($this->public_date));
+        $this->event_day = date('d-m-Y H:i', strtotime($this->event_day));
     }
 }

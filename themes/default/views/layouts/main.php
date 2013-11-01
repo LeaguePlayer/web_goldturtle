@@ -42,36 +42,35 @@
                     </div>
 					<a href="<?php echo $this->createUrl('site/index', $getPlace); ?>"></a>
 				</div>
+                <div class="select_place">
+                    <div class="text">Выбор зала</div>
+                    <ul>
+                        <?php foreach ( $this->allPlaces as $place ): ?>
+                            <li <?if($place->id === $this->place['id']):?>class="current"<?endif;?>><a <?if($place->id !== $this->place['id']):?> href="<?=$place->getChangeUrl();?>"<? endif; ?>><?=$place->title;?></a></li>
+                        <?php endforeach; ?>
+                    </ul>
+                </div>
 				<div class="h-content">
-					<div class="city gray">Тюмень</div>
-
 					<ul class="main_menu">
-						<li <?php if ($this->currentPage == 'main') echo "class='current'"; ?>><a <?php if ($this->currentPage != 'main') echo "href='".$this->createUrl('site/index', $getPlace)."'"; ?>>Главная</a></li>
-						<li class="separator"></li>
-						<li <?php if ($this->currentPage == 'about') echo "class='current'"; ?>><a <?php if ($this->currentPage != 'about') echo "href='".Pages::getUrlByAlias('about')."'"; ?>>О нас</a></li>
-						<li class="separator"></li>
-						<li <?php if ($this->currentPage == 'contacti') echo "class='current'"; ?>><a <?php if ($this->currentPage != 'contacti') echo "href='".Pages::getUrlByAlias('contacti')."'"; ?>>Контакты</a></li>
-						<li class="separator"></li>
-						<li <?php if ($this->currentPage == 'jobs') echo "class='current'"; ?>><a <?php if ($this->currentPage != 'jobs') echo "href='".$this->createUrl('/jobs/index')."'"; ?>>Вакансии</a></li>
-						<li class="separator"></li>
-						<li <?php if ($this->currentPage == 'banners') echo "class='current'"; ?>><a <?php if ($this->currentPage != 'banners') echo "href='".Banners::listUrl()."'"; ?>>Реклама</a></li>
-						<li class="separator"></li>
-						<li <?php if ($this->currentPage == 'partners') echo "class='current'"; ?>><a <?php if ($this->currentPage != 'partners') echo "href='".$this->createUrl('/partners/index')."'"; ?>>Партнеры</a></li>
+                        <li <?php if ($this->currentPage == 'employees') echo "class='current'"; ?>><a <?php if ($this->currentPage != 'employees') echo "href='".$this->createUrl('/employees/index', $getPlace)."'"; ?>>Команда</a></li>
+                        <li class="separator"></li>
+                        <li <?php if ($this->currentPage == 'ineriors') echo "class='current'"; ?>><a <?php if ($this->currentPage != 'ineriors') echo "href='".$this->createUrl('/interiors/index', $getPlace)."'"; ?>>Интерьер</a></li>
+                        <li class="separator"></li>
+                        <li <?php if ($this->currentPage == 'partners') echo "class='current'"; ?>><a <?php if ($this->currentPage != 'partners') echo "href='".$this->createUrl('/partners/index', $getPlace)."'"; ?>>Партнеры</a></li>
+                        <li class="separator"></li>
+                        <li <?php if ($this->currentPage == 'contacti') echo "class='current'"; ?>><a <?php if ($this->currentPage != 'contacti') echo "href='".Pages::getUrlByAlias('contacti')."'"; ?>>Контакты</a></li>
+                        <li class="separator"></li>
+                        <li <?php if ($this->currentPage == 'jobs') echo "class='current'"; ?>><a <?php if ($this->currentPage != 'jobs') echo "href='".$this->createUrl('/jobs/index')."'"; ?>>Вакансии</a></li>
 					</ul>
 
 					<div class="clear"></div>
 
 					<ul class="action_menu">
-						<li><a class="room" href="<?php echo $this->createUrl('/site/place'); ?>">Выбор зала</a></li>
-						<li><a class="news" href="<?php echo Events::getNewsUrl($this->place); ?>">Новости</a></li>
-						<li><a class="chronic" href="<?php echo Events::getChroniclesUrl($this->place); ?>">Светская хроника</a></li>
+                        <li><a class="menu" href="<?php echo $this->createUrl('/menu/index', $getPlace); ?>">Меню</a></li>
+                        <li><a class="dishes" href="<?php echo $this->createUrl('/dishes/index', $getPlace); ?>">Фото блюд</a></li>
+                        <li><a class="news" href="<?php echo Events::getNewsUrl($this->place); ?>">События</a></li>
+                        <li><a class="reviews" href="<?php echo $this->createUrl('/reviews/index'); ?>">Отзывы</a></li>
 						<li><a class="order fancybox-ajax" href="<?php echo $this->createUrl('/site/order') ?>">Забронировать столик</a></li>
-					</ul>
-
-					<ul class="socials">
-						<!-- <li><a class="twitter" href="#" target="_blank"></a></li> -->
-						<li><a class="facebook" href="https://www.facebook.com/pages/Ресторан-Бар-Золотая-Черепаха/344894012283405" target="_blank"></a></li>
-						<li><a class="vkontakte" href="http://vk.com/zolotayacherepaha" target="_blank"></a></li>
 					</ul>
 				</div>
 			</section>
@@ -80,7 +79,7 @@
 			<?php Yii::app()->clientScript->registerScriptFile($this->getAssetsUrl().'/js/lib/jquery.slides.min.js', CClientScript::POS_END); ?>
 			<section class="slider">
 				<div class="viewport-wrap">
-					<div id="slides" style="display: none;">
+					<div id="slides" style="display: none;" data-duration="<?php echo Settings::getOption('slider_duration'); ?>">
 						<?php foreach ($this->sliderManager->galleryPhotos as $slide): ?>
 							<img src="<?php echo $slide->getPreview('big'); ?>">
 						<?php endforeach; ?>
@@ -104,7 +103,7 @@
 
 		<footer id="footer" class="fix-width center">
             <div class="content">
-                <?php echo $this->footer; ?>
+                <?php echo Pageparts::getContent(Pageparts::PART_TYPE_FOOTER); ?>
             </div>
 			<p class="amobile"><a href="http://amobile-studio.ru/"></a><span>Всегда только лучшие идеи</span></p>
 		</footer>

@@ -11,11 +11,13 @@
 class Pageparts extends CActiveRecord
 {
     const PART_TYPE_FOOTER = 1;
+    const PART_TYPE_CONTENT_BOX = 2;
 
     public static function getPartTypes()
     {
         return array(
-            self::PART_TYPE_FOOTER => 'Подвал'
+            self::PART_TYPE_FOOTER => 'Подвал',
+            self::PART_TYPE_CONTENT_BOX => 'Блок под слайдером'
         );
     }
 
@@ -79,5 +81,12 @@ class Pageparts extends CActiveRecord
 	{
 		return parent::model($className);
 	}
+
+    public static function getContent($type)
+    {
+        $model = self::model()->findByAttributes(array('type'=>$type));
+        if ( $model !== null )
+            return $model->content;
+    }
 
 }

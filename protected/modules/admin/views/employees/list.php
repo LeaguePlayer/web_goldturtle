@@ -19,6 +19,12 @@ $this->menu=array(
 		),
 		'fio',
 		'position',
+        array(
+            'name'=>'place_id',
+            'type'=>'raw',
+            'value'=>'$data->place->title',
+            'filter'=>CHtml::listData(Places::model()->findAll(), 'id', 'title')
+        ),
 		array(
 			'name'=>'face_of_day',
 			'type'=>'raw',

@@ -32,6 +32,7 @@ class PartnersController extends Controller
 		$criteria = new CDbCriteria;
 		$criteria->order = 'create_time';
 		$criteria->addCondition('status=:status');
+		$criteria->compare('place_id', $this->place['id']);
 		$criteria->params[':status'] = Partners::STATUS_PUBLISH;
 		$dataProvider=new CActiveDataProvider('Partners', array(
 			'criteria' => $criteria,
@@ -43,6 +44,7 @@ class PartnersController extends Controller
         Yii::app()->clientScript->registerMetaTag($metadata->meta_keywords, 'Keywords');
         Yii::app()->clientScript->registerMetaTag($metadata->meta_description, 'Description');
 		$this->render('index',array(
+            'title'=>!empty($metadata->title) ? $metadata->title : 'Наши партнеры',
 			'dataProvider'=>$dataProvider,
 		));
 	}

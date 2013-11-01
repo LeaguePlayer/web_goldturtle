@@ -8,9 +8,9 @@ class ReviewsWidget extends CWidget
 	{
 		if ( $this->dataProvider === null ) {
 			$model = new Reviews;
-			$model->status = Reviews::STATUS_PUBLISH;
 			$criteria = new CDbCriteria;
 			$criteria->order = 'create_time DESC';
+            $criteria->compare('status', Reviews::STATUS_PUBLISH);
 			$this->dataProvider = new CActiveDataProvider($model, array(
 				'criteria' => $criteria,
 				'pagination' => array(

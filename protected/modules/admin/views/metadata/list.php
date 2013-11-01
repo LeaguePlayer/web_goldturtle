@@ -12,6 +12,7 @@
             'value'=>'$data->pageType',
             'filter'=>Metadata::getPostTypes(),
         ),
+        'title',
         'meta_title',
 		array(
 			'class'=>'bootstrap.widgets.TbButtonColumn',

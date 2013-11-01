@@ -6,7 +6,7 @@
 	<?php $this->widget('application.extensions.face.FaceOfDayWidget'); ?>
 <?php $this->endClip(); ?>
 
-<h1 class="title">Реклама</h1>
+<h1 class="title"><?=$title;?></h1>
 
 <?php $this->widget('zii.widgets.CListView', array(
 	'dataProvider'=>$dataProvider,

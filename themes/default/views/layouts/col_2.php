@@ -4,7 +4,6 @@
 <?php if ( !isset($this->clips['r_sidebar']) ): ?>
 	<?php $this->beginClip('r_sidebar'); ?>
 		<?php $this->widget('application.extensions.banner.BannerWidget'); ?>
-		<?php $this->widget('application.extensions.face.FaceOfDayWidget'); ?>
 	<?php $this->endClip(); ?>
 <?php endif; ?>
 
@@ -17,7 +16,6 @@
 	<section class="content col_2">
 		<?php echo $content; ?>
 	</section>
-
 
 	<aside class="r_side">
 		<?php echo $this->clips['r_sidebar'];?>

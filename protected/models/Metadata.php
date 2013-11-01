@@ -21,6 +21,7 @@ class Metadata extends CActiveRecord
     const POST_TYPE_JOBS = 8;
     const POST_TYPE_BANNERS = 9;
     const POST_TYPE_PARTNERS = 10;
+    const POST_TYPE_REVIEWS = 11;
 
     public static function getPostTypes()
     {
@@ -35,6 +36,7 @@ class Metadata extends CActiveRecord
             self::POST_TYPE_JOBS => 'Страница "Вакансии"',
             self::POST_TYPE_BANNERS => 'Страница "Реклама"',
             self::POST_TYPE_PARTNERS => 'Страница "Наши партнеры"',
+            self::POST_TYPE_REVIEWS => 'Страница "Отзывы"',
         );
     }
 
@@ -55,9 +57,9 @@ class Metadata extends CActiveRecord
 	public function rules()
 	{
 		return array(
-			array('post_type', 'required'),
+			array('post_type, title', 'required'),
 			array('post_type', 'numerical', 'integerOnly'=>true),
-			array('meta_title', 'length', 'max'=>256),
+			array('meta_title, title', 'length', 'max'=>256),
             array('meta_description, meta_keywords', 'safe'),
 			// The following rule is used by search().
 			array('id, post_type, meta_description, meta_keywords', 'safe', 'on'=>'search'),
@@ -76,8 +78,9 @@ class Metadata extends CActiveRecord
 	{
 		return array(
 			'id' => 'ID',
+			'title' => 'Заголовок',
 			'post_type' => 'Страница',
-            'meta_title' => 'Заголовок',
+            'meta_title' => 'Мета-заголовок',
 			'meta_description' => 'Описание',
 			'meta_keywords' => 'Ключевые слова',
 		);
@@ -89,6 +92,7 @@ class Metadata extends CActiveRecord
 		$criteria=new CDbCriteria;
 
 		$criteria->compare('id',$this->id);
+		$criteria->compare('title',$this->title);
 		$criteria->compare('post_type',$this->post_type);
 		$criteria->compare('meta_description',$this->meta_description,true);
 		$criteria->compare('meta_keywords',$this->meta_keywords,true);

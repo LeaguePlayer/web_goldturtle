@@ -38,8 +38,7 @@ class Controller extends CController
 	 * Текущее заведение
 	 */
 	public $place;
-
-    public $footer;
+    public $allPlaces;
 	
 	/*
 	 * Слайдер
@@ -99,9 +98,10 @@ class Controller extends CController
         }
 
         $this->place = $cookiePlace;
+        $criteria = new CDbCriteria();
+        $criteria->compare('status', Places::STATUS_PUBLISH);
+        $this->allPlaces = Places::model()->findAll($criteria);
 
-        $footer = Pageparts::model()->findByAttributes(array('type'=>Pageparts::PART_TYPE_FOOTER));
-        $this->footer = $footer->content;
         return parent::beforeAction($action);
     }
 

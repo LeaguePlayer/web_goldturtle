@@ -15,6 +15,8 @@
 
 	<?php echo $form->textFieldControlGroup($model,'position',array('class'=>'span8','maxlength'=>256)); ?>
 
+    <?php echo $form->dropDownListControlGroup($model, 'place_id', CHtml::listData(Places::model()->findAll(), 'id', 'title'), array('class'=>'span8', 'displaySize'=>1)); ?>
+
 	<div class='control-group'>
 		<?php echo CHtml::activeLabelEx($model, 'html_quote'); ?>
 		<?php $this->widget('admin_ext.ckeditor.CKEditorWidget', array('model' => $model, 'attribute' => 'html_quote',

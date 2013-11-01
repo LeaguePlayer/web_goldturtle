@@ -18,7 +18,7 @@ class ReviewsController extends Controller
 	{
 		return array(
 			array('allow',  // allow all users to perform 'index' and 'view' actions
-				'actions'=>array('loadMore', 'add'),
+				'actions'=>array('loadMore', 'add', 'index'),
 				'users'=>array('*'),
 			),
 			array('deny',  // deny all users
@@ -27,11 +27,33 @@ class ReviewsController extends Controller
 		);
 	}
 
+
+    public function actionIndex()
+    {
+        $criteria = new CDbCriteria;
+        $criteria->compare('status', Reviews::STATUS_PUBLISH);
+        $criteria->order = 'create_time DESC';
+        $dataProvider = new CActiveDataProvider('Reviews', array(
+            'criteria' => $criteria,
+            'pagination' => array(
+                'pageSize' => 10,
+            ),
+        ));
+        $metadata = Metadata::fetch(Metadata::POST_TYPE_REVIEWS);
+        $this->title = $metadata->meta_title;
+        Yii::app()->clientScript->registerMetaTag($metadata->meta_keywords, 'Keywords');
+        Yii::app()->clientScript->registerMetaTag($metadata->meta_description, 'Description');
+        $this->render('index', array(
+            'title'=>!empty($metadata->title) ? $metadata->title : 'Отзывы',
+            'dataProvider'=>$dataProvider
+        ));
+    }
+
 	
 	public function actionLoadMore()
 	{
 		if (isset($_POST['page']))
-            $_GET[$param] = Yii::app()->request->getPost('page');
+            $_GET['page'] = Yii::app()->request->getPost('page');
 		
 		$criteria = new CDbCriteria;
 		$criteria->addCondition('status=:status');

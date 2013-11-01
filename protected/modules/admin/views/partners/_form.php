@@ -13,6 +13,8 @@
 
 	<?php echo $form->textFieldControlGroup($model,'name',array('class'=>'span8','maxlength'=>256)); ?>
 
+    <?php echo $form->dropDownListControlGroup($model, 'place_id', CHtml::listData(Places::model()->findAll(), 'id', 'title'), array('class'=>'span8', 'displaySize'=>1)); ?>
+
 	<?php echo $form->textAreaControlGroup($model,'description',array('class'=>'span8','maxlength'=>256)); ?>
 
 	<?php echo $form->textFieldControlGroup($model,'site',array('class'=>'span8','maxlength'=>256)); ?>

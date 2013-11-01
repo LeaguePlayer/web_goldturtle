@@ -32,7 +32,8 @@ class EmployeesController extends Controller
 		$criteria = new CDbCriteria;
 		$criteria->order = 'create_time';
 		$criteria->addCondition('status=:status');
-		$criteria->params[':status'] = Menu::STATUS_PUBLISH;
+		$criteria->compare('place_id', $this->place['id']);
+		$criteria->params[':status'] = Employees::STATUS_PUBLISH;
 		$dataProvider=new CActiveDataProvider('Employees', array(
 			'criteria' => $criteria,
 			'pagination' => array(
@@ -43,7 +44,9 @@ class EmployeesController extends Controller
         $this->title = $metadata->meta_title.' | '.$this->place['meta_title'];
         Yii::app()->clientScript->registerMetaTag($metadata->meta_keywords, 'Keywords');
         Yii::app()->clientScript->registerMetaTag($metadata->meta_description, 'Description');
+        $this->currentPage = 'employees';
 		$this->render('index',array(
+            'title'=>!empty($metadata->title) ? $metadata->title : 'Наша команда',
 			'dataProvider'=>$dataProvider,
 		));
 	}

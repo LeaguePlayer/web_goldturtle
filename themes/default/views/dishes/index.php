@@ -3,7 +3,7 @@
 /* @var $dataProvider CActiveDataProvider */
 ?>
 
-<h1 class="title">Фото блюд</h1>
+<h1 class="title"><?=$title;?></h1>
 
 <?php $this->widget('zii.widgets.CListView', array(
 	'dataProvider'=>$dataProvider,

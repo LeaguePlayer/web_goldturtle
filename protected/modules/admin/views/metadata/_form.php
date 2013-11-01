@@ -3,6 +3,8 @@
 	'enableAjaxValidation'=>false,
 )); ?>
 
+    <?php echo $form->textFieldControlGroup($model, 'title',array('class'=>'span8','maxlength'=>256)); ?>
+
     <?php echo $form->textFieldControlGroup($model, 'meta_title',array('class'=>'span8','maxlength'=>256)); ?>
 
 	<?php echo $form->dropDownListControlGroup($model,'post_type', Metadata::getPostTypes(), array('class'=>'span8', 'empty' => 'Не задано', 'displaySize'=>1)); ?>

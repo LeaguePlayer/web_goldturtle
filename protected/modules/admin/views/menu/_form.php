@@ -20,6 +20,7 @@
 		<?php echo $form->error($model, 'html_content'); ?>
 	</div>
 
+    <?php echo $form->textFieldControlGroup($model,'meta_title',array('class'=>'span8', 'rows'=>10)); ?>
 	<?php echo $form->dropDownListControlGroup($model, 'place_id', CHtml::listData(Places::model()->findAll(), 'id', 'title'), array('class'=>'span8', 'displaySize'=>1)); ?>
 	<?php echo $form->dropDownListControlGroup($model, 'status', Menu::getStatusAliases(), array('class'=>'span8', 'displaySize'=>1)); ?>
 

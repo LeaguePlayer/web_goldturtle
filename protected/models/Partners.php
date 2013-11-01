@@ -25,7 +25,7 @@ class Partners extends EActiveRecord
 	public function rules()
 	{
 		return array(
-			array('name', 'required'),
+			array('name, place_id', 'required'),
 			array('status, sort, create_time, update_time', 'numerical', 'integerOnly'=>true),
 			array('name, site', 'length', 'max'=>256),
 			array('description, image', 'safe'),
@@ -38,6 +38,7 @@ class Partners extends EActiveRecord
 	public function relations()
 	{
 		return array(
+            'place'=>array(self::BELONGS_TO, 'Places', 'place_id'),
 		);
 	}
 
@@ -46,6 +47,7 @@ class Partners extends EActiveRecord
 	{
 		return array(
 			'id' => 'ID',
+            'place_id' => 'Привязка к помещению',
 			'image' => 'Логотип',
 			'name' => 'Название компании',
 			'description' => 'Описание',
@@ -81,6 +83,7 @@ class Partners extends EActiveRecord
 		$criteria=new CDbCriteria;
 
 		$criteria->compare('id',$this->id);
+        $criteria->compare('place_id',$this->place_id);
 		$criteria->compare('image',$this->image,true);
 		$criteria->compare('name',$this->name,true);
 		$criteria->compare('description',$this->description,true);

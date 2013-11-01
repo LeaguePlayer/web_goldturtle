@@ -27,7 +27,7 @@ class Pages extends EActiveRecord
 		return array(
 			array('title', 'required'),
 			array('place_id, status, sort, create_time, update_time', 'numerical', 'integerOnly'=>true),
-			array('title, alias', 'length', 'max'=>256),
+			array('title, alias, meta_title', 'length', 'max'=>256),
 			array('alias', 'match', 'pattern'=>'/^[\w]+$/', 'message'=>'Идентификатор не должен содержать русских символов, спецсимволов и пробелов'),
 			array('html_content, meta_description, meta_keywords', 'safe'),
 			// The following rule is used by search().

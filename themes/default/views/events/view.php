@@ -5,19 +5,28 @@
 	 */
 ?>
 
+<ul class="event_switcher">
+    <li class="<?php if ($type == Events::TYPE_NEWS) echo "current "; ?>news">
+        <a <?php if ($type != Events::TYPE_NEWS): ?>href="<?=Events::getNewsUrl($this->place);?>"<?php endif; ?>>Новости ресторана</a>
+    </li>
+    <li class="<?php if ($type == Events::TYPE_CHRONICLE) echo "current "; ?>chronicle">
+        <a <?php if ($type != Events::TYPE_CHRONICLE): ?>href="<?=Events::getChroniclesUrl($this->place);?>"<?php endif; ?>>Светская хроника</a>
+    </li>
+</ul>
+
 <?php if ($model->type == Events::TYPE_NEWS): ?>
 	<article class="news event">
-		<h1><span class="date"><strong><?php echo $model->publicDay; ?></strong> <?php echo $model->publicMonth; ?></span><?php echo $model->title;?></h1>
+		<h1><span class="date"><strong><?php echo $model->getDay('public_date'); ?></strong> <?php echo $model->getMonth('public_date'); ?></span><?php echo $model->title;?></h1>
 		<div class="content">
 			<img src="<?php echo $model->getThumb('big'); ?>" alt="">
-			<div class="event_date"><span class="number"><?php echo $model->publicDay; ?></span> <?php echo $model->publicMonth; ?>. <?php if ( $model->publicTime !== null ) echo "Начало в {$model->publicTime}"; ?></div>
+			<div class="event_date"><span class="number"><?php echo $model->getDay('event_day'); ?></span> <?php echo $model->getMonth('event_day'); ?>. <?php if ( ($eventTime=$model->getTime('event_day')) !== null ) echo "Начало в {$eventTime}"; ?></div>
 			<?php echo $model->html_content; ?>
 			<div class="clear"></div>
 		</div>
 	</article>
 <?php else: ?>
 	<article class="chronicle event">
-		<h1><span class="date"><strong><?php echo $model->publicDay; ?></strong> <?php echo $model->publicMonth.'<br>'.$model->publicYear; ?></span><?php echo $model->title;?></h1>
+		<h1><span class="date"><strong><?php echo $model->getDay('public_date'); ?></strong> <?php echo $model->getMonth('public_date').'<br>'.$model->getYear('public_date'); ?></span><?php echo $model->title;?></h1>
 		<div class="content">
 			<div class="text">
 				<?php echo $model->html_content; ?>

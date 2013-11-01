@@ -19,6 +19,7 @@
 		} ?>
 	</div>
 
+    <?php echo $form->textFieldControlGroup($model,'meta_title',array('class'=>'span8', 'rows'=>10)); ?>
     <?php echo $form->textAreaControlGroup($model,'meta_description',array('class'=>'span8', 'rows'=>10)); ?>
     <?php echo $form->textAreaControlGroup($model,'meta_keywords',array('class'=>'span8', 'rows'=>6)); ?>
 

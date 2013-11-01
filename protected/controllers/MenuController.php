@@ -44,7 +44,7 @@ class MenuController extends Controller
 			'criteria' => $criteria,
 			'pagination' => false
 		));
-        $this->title = $model->name.' | '.$this->place['meta_title'];
+        $this->title = $model->meta_title.' | '.$this->place['meta_title'];
         Yii::app()->clientScript->registerMetaTag($model->meta_keywords, 'Keywords');
         Yii::app()->clientScript->registerMetaTag($model->meta_description, 'Description');
 		$this->render('view',array(
@@ -72,6 +72,7 @@ class MenuController extends Controller
         Yii::app()->clientScript->registerMetaTag($metadata->meta_keywords, 'Keywords');
         Yii::app()->clientScript->registerMetaTag($metadata->meta_description, 'Description');
 		$this->render('index',array(
+            'title'=>!empty($metadata->title) ? $metadata->title : 'Меню',
 			'dataProvider'=>$dataProvider,
 		));
 	}

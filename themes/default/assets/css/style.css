@@ -332,12 +332,56 @@ ul.socials li a.vkontakte:hover {
 	#header .top {
 		height: 110px;
 	}
+    #header .select_place {
+        display: inline-block;
+        vertical-align: top;
+        padding: 20px 0 0 20px;
+        width: 170px;
+        text-align: center;
+    }
+    #header .select_place .text:before {
+        content: "";
+        display: inline-block;
+        vertical-align: middle;
+        width: 25px;
+        height: 20px;
+        background: url('../img/sprites.png') no-repeat -12px -46px;
+    }
+    #header .select_place .text {
+        font-size: 18px;
+        font-weight: bold;
+        margin-bottom: 5px;
+    }
+    #header .select_place ul {
+        border: 1px solid #000;
+        border-radius: 4px;
+        padding: 4px 4px 0;
+    }
+    #header .select_place ul li {
+        margin-bottom: 4px;
+    }
+    #header .select_place ul li a {
+        color: #000;
+        display: inline-block;
+        width: 100%;
+        height: 100%;
+        text-shadow: 0 1px 0 #fff;
+    }
+    #header .select_place ul li a:hover {
+        text-decoration: underline;
+    }
+    #header .select_place ul li.current a {
+        font-weight: bold;
+    }
+    #header .select_place ul li.current a:hover {
+        text-decoration: none;
+    }
+
 	#header .h-content {
 		display: inline-block;
 		padding-top: 30px;
-		padding-right: 60px;
-		padding-left: 30px;
-		width: 670px;
+		width: 610px;
+        float: right;
 	}
 
 	#header .city {
@@ -382,9 +426,10 @@ ul.socials li a.vkontakte:hover {
 	#header ul.action_menu {
 		display: inline-block;
 		vertical-align: middle;
+        float: right;
 	}
 	#header ul.action_menu li {
-		margin-right: 15px;
+		margin-left: 15px;
 		display: inline-block;
 	}
 	#header ul.action_menu li a {
@@ -401,18 +446,57 @@ ul.socials li a.vkontakte:hover {
 		height: 20px;
 		background: url('../img/sprites.png') no-repeat;
 	}
-	#header ul.action_menu li a.room:before {
-		background-position: -12px -46px;
-	}
 	#header ul.action_menu li a.news:before {
 		background-position: -231px -184px;
 	}
-	#header ul.action_menu li a.chronic:before {
-		background-position: -42px -46px;
-	}
+    #header ul.action_menu li a.menu:before {
+        background-position: -544px -6px;
+    }
+    #header ul.action_menu li a.dishes:before {
+        background-position: -544px -31px;
+    }
+    #header ul.action_menu li a.reviews:before {
+        background-position: -544px -54px;
+    }
 	#header ul.action_menu li a.order:before {
 		background-position: -78px -46px;
 	}
+    #header ul.action_menu li a.order {
+        background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #454545), color-stop(1, #000000) );
+        background:-moz-linear-gradient( center top, #454545 5%, #000000 100% );
+        filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#454545', endColorstr='#000000');
+        background-color:#454545;
+        -webkit-border-top-left-radius:6px;
+        -moz-border-radius-topleft:6px;
+        border-top-left-radius:6px;
+        -webkit-border-top-right-radius:6px;
+        -moz-border-radius-topright:6px;
+        border-top-right-radius:6px;
+        -webkit-border-bottom-right-radius:6px;
+        -moz-border-radius-bottomright:6px;
+        border-bottom-right-radius:6px;
+        -webkit-border-bottom-left-radius:6px;
+        -moz-border-radius-bottomleft:6px;
+        border-bottom-left-radius:6px;
+        text-indent:0;
+        display:inline-block;
+        color:#ffffff;
+        font-weight:bold;
+        text-decoration:none;
+        text-align:center;
+        line-height: 24px;
+        padding: 0 10px;
+    }
+    #header ul.action_menu li a.order:hover {
+        background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #000000), color-stop(1, #454545) );
+        background:-moz-linear-gradient( center top, #000000 5%, #454545 100% );
+        filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#000000', endColorstr='#454545');
+        background-color:#000000;
+    }
+    #header ul.action_menu li a.order:active {
+         position:relative;
+         top:1px;
+    }
 
 	#header ul.socials {
 		float: right;
@@ -653,6 +737,12 @@ ul.socials li a.vkontakte:hover {
 	}
 
 
+    #layout > .content-box {
+        float: left;
+        margin-bottom: 30px;
+        padding: 0 0 0 20px;
+        width: 725px;
+    }
 
 	/*---- Контент ----*/
 	.col_1 .topics {
@@ -848,11 +938,11 @@ ul.socials li a.vkontakte:hover {
 		box-shadow: 0 0 3px 1px #d3d3d3;
 	}
 
-	.r_side .face {
+	.face {
 		text-align: center;
 		margin-bottom: 50px;
 	}
-	.r_side .face h2 {
+	.face h2 {
 		font-size: 24px;
 		display: inline-block;
 		padding-left: 45px;
@@ -860,7 +950,7 @@ ul.socials li a.vkontakte:hover {
 		float: left;
 		margin-bottom: 15px;
 	}
-	.r_side .face h2:before {
+	.face h2:before {
 		content: "";
 		display: inline-block;
 		position: absolute;
@@ -871,28 +961,30 @@ ul.socials li a.vkontakte:hover {
 		background: url('../img/sprites.png') no-repeat;
 		background-position: -77px -180px;
 	}
-	.r_side .face .img_border {
+	.face .img_border {
 		display: inline-block;
 		padding: 16px;
 		background-color: rgba(219,219,219,0.44);
 		width: 130px;
 	}
-	.r_side .face .img_round {
+	.face .img_round {
 		display: inline-block;
 		overflow: hidden;
 		border-radius: 0 30px 30px 0;
 	}
-	.r_side .face img {
+	.face img {
 		width: 130px;
 	}
-	.r_side .face .name {
+	.face .name {
 		font-size: 16px;
 		line-height: 1.2;
 		margin: 20px 0 16px;
+        padding: 0 20px;
 	}
-	.r_side .face .post {
+	.face .post {
 		font-size: 12px;
 		color: #a5a5a5;
+        padding: 0 20px;
 	}
 
 
@@ -1343,6 +1435,49 @@ ul.contacts li.email p a {
 /********************************
  *   Просмотр новостей и хроник
  *******************************/
+ul.event_switcher {
+    width: 730px;
+    margin-bottom: 30px;
+}
+ul.event_switcher li {
+    width: 360px;
+    display: inline-block;
+    vertical-align: middle;
+    text-align: center;
+}
+ul.event_switcher li.news {
+    border-right: 5px solid #000;
+    text-align: right;
+}
+ul.event_switcher li.news a {
+    margin-right: 20px;
+}
+ul.event_switcher li.chronicle {
+    text-align: left;
+}
+ul.event_switcher li.chronicle a {
+    margin-left: 15px;
+}
+ul.event_switcher li a {
+    font-family: pt_sansregular,sans-serif;
+    font-size: 28px;
+    color: #C2C2C2;
+    display: inline-block;
+}
+ul.event_switcher li a:hover {
+    text-decoration: underline;
+    color: #000;
+}
+ul.event_switcher li.current a {
+    font-weight: bold;
+    color: #000;
+}
+ul.event_switcher li.current a:hover {
+    text-decoration: none;
+}
+
+
+
 article.event {
 	padding-bottom: 30px;
 	border-bottom: 4px solid #000;
@@ -2072,4 +2207,11 @@ ul.round {
     top: 0;
     left: 0;
     z-index: 100;
+}
+
+.review_date {
+    color: #c2c2c2;
+}
+.review.name {
+    margin-bottom: 10px;
 }

@@ -47,8 +47,7 @@ class EventsController extends Controller
 				'pageSize' => 1000,
 			)
 		));
-
-        $this->title = $model->title.' | '.$this->place['meta_title'];
+        $this->title = !empty($model->meta_title) ? $model->meta_title : $model->title.' | '.$this->place['meta_title'];
         Yii::app()->clientScript->registerMetaTag($model->meta_keywords, 'Keywords');
         Yii::app()->clientScript->registerMetaTag($model->meta_description, 'Description');
 		$this->render('view',array(
@@ -85,17 +84,21 @@ class EventsController extends Controller
 		));
         switch ($typeId) {
             case Events::TYPE_NEWS:
-                $pageType = Metadata::POST_TYPE_NEWS;
+                $metadata = Metadata::fetch(Metadata::POST_TYPE_NEWS);
+                $title = !empty($metadata->title) ? $metadata->title : 'Новости ресторана';
                 break;
             case Events::TYPE_CHRONICLE:
-                $pageType = Metadata::POST_TYPE_CHRONICLES;
+                $metadata = Metadata::fetch(Metadata::POST_TYPE_CHRONICLES);
+                $title = !empty($metadata->title) ? $metadata->title : 'Светская хроника';
                 break;
         }
-        $metadata = Metadata::fetch($pageType);
         $this->title = $metadata->meta_title.' | '.$this->place['meta_title'];
         Yii::app()->clientScript->registerMetaTag($metadata->meta_keywords, 'Keywords');
         Yii::app()->clientScript->registerMetaTag($metadata->meta_description, 'Description');
+
+
 		$this->render('index', array(
+            'title'=>$title,
 			'type'=>$typeId,
 			'dataProvider'=>$dataProvider,
 		));
