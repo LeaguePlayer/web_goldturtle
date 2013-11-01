@@ -1,7 +1,7 @@
 <?php
 
 	$cs = Yii::app()->clientScript;
-	$cs->registerCssFile($this->getAssetsUrl().'/css/style.css');
+	$cs->registerCssFile($this->getAssetsUrl().'/css/style.css?v=3');
 	$cs->registerCssFile($this->getAssetsUrl().'/css/adipoli.css');
 	$cs->registerCssFile($this->getAssetsUrl().'/css/fancybox/jquery.fancybox.css');
 	$cs->registerCssFile($this->getAssetsUrl().'/css/jquery.ui/overcast/jquery-ui-1.10.3.custom.min.css');
@@ -19,7 +19,7 @@
 	
 	$cs->registerScriptFile($this->getAssetsUrl().'/js/lib/jquery.timepicker.addon.js', CClientScript::POS_END);
 	$cs->registerScriptFile($this->getAssetsUrl().'/js/lib/jquery.ui.timepicker.ru.js', CClientScript::POS_END);
-	$cs->registerScriptFile($this->getAssetsUrl().'/js/common.js', CClientScript::POS_END);
+	$cs->registerScriptFile($this->getAssetsUrl().'/js/common.js?v=3', CClientScript::POS_END);
 ?><!DOCTYPE html>
 <html lang="ru">
 	<head>
