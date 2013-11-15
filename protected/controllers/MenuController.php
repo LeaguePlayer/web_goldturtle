@@ -44,7 +44,7 @@ class MenuController extends Controller
 			'criteria' => $criteria,
 			'pagination' => false
 		));
-        $this->title = $model->meta_title.' | '.$this->place['meta_title'];
+        $this->title = $model->meta_title;//.' | '.$this->place['meta_title'];
         Yii::app()->clientScript->registerMetaTag($model->meta_keywords, 'Keywords');
         Yii::app()->clientScript->registerMetaTag($model->meta_description, 'Description');
 		$this->render('view',array(

@@ -41,7 +41,7 @@ class ReviewsController extends Controller
             ),
         ));
         $metadata = Metadata::fetch(Metadata::POST_TYPE_REVIEWS);
-        $this->title = $metadata->meta_title.' | '.$this->place['meta_title'];
+        $this->title = $metadata->meta_title;//.' | '.$this->place['meta_title'];
         Yii::app()->clientScript->registerMetaTag($metadata->meta_keywords, 'Keywords');
         Yii::app()->clientScript->registerMetaTag($metadata->meta_description, 'Description');
         $this->render('index', array(

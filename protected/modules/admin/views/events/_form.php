@@ -29,6 +29,8 @@
         <?php echo $form->error($model, 'image'); ?>
     </div>
 
+    <?php echo $form->checkBoxControlGroup($model, 'preview_clickable'); ?>
+
 	<?php echo $form->textAreaControlGroup($model,'description',array('rows'=>6, 'cols'=>50, 'class'=>'span8')); ?>
 
 	<div class='control-group'>

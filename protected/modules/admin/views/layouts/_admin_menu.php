@@ -39,7 +39,7 @@ $menuItems = array(
             array('label'=>'Добавить', 'url'=>"/admin/partners/create"),
             array('label'=>'Список', 'url'=>"/admin/partners/list"),
         )),
-        array('label'=>'Интерьер', 'url'=>'#', 'items' => array(
+        array('label'=>'Фотоальбомы', 'url'=>'#', 'items' => array(
             array('label'=>'Добавить', 'url'=>"/admin/interiors/create"),
             array('label'=>'Список', 'url'=>"/admin/interiors/list"),
         )),

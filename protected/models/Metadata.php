@@ -81,7 +81,7 @@ class Metadata extends CActiveRecord
 			'title' => 'Заголовок',
 			'post_type' => 'Страница',
             'meta_title' => 'Мета-заголовок',
-			'meta_description' => 'Описание',
+			'meta_description' => 'Мета-контент',
 			'meta_keywords' => 'Ключевые слова',
 		);
 	}
@@ -112,6 +112,17 @@ class Metadata extends CActiveRecord
     public static function fetch($post_type)
     {
         return self::model()->findByAttributes(array('post_type'=>$post_type));
+    }
+
+
+    public function beforeSave()
+    {
+        if ( parent::beforeSave() ) {
+            if (empty($this->meta_title))
+                $this->meta_title = $this->title;
+            return true;
+        }
+        return false;
     }
 
 }

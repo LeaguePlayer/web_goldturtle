@@ -7,6 +7,7 @@
  * @property integer $id
  * @property string $title
  * @property string $image
+ * @property string $preview_clickable
  * @property string $description
  * @property string $html_content
  * @property integer $gallery
@@ -46,7 +47,7 @@ class Events extends EActiveRecord
 	{
 		return array(
 			array('title, html_content, place_id, type', 'required'),
-			array('gallery, place_id, type, status, sort, create_time, update_time', 'numerical', 'integerOnly'=>true),
+			array('gallery, place_id, type, status, sort, create_time, update_time, preview_clickable', 'numerical', 'integerOnly'=>true),
 			array('title, meta_title', 'length', 'max'=>256),
 			array('description, public_date, event_day, meta_description, meta_keywords', 'safe'),
 			// The following rule is used by search().
@@ -69,6 +70,7 @@ class Events extends EActiveRecord
 			'id' => 'ID',
 			'title' => 'Загловок',
 			'image' => 'Превью к новости',
+			'preview_clickable' => 'Открывать превью во всплывающем окне',
 			'description' => 'Краткое описание',
 			'html_content' => 'Контент',
 			'gallery' => 'Галерея',
@@ -263,5 +265,10 @@ class Events extends EActiveRecord
         parent::afterFind();
         $this->public_date = date('d-m-Y', strtotime($this->public_date));
         $this->event_day = date('d-m-Y H:i', strtotime($this->event_day));
+    }
+
+    public function isPreviewClickable()
+    {
+        return $this->preview_clickable != 0;
     }
 }

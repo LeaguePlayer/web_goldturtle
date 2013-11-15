@@ -1,6 +1,6 @@
 <?php
 $this->breadcrumbs=array(
-	"{$model->translition()}"=>array('list'),
+	"Фотографии"=>array('list'),
 	'Создание',
 );
 
@@ -9,6 +9,6 @@ $this->menu=array(
 );
 ?>
 
-<h1><?php echo $model->translition(); ?> - Добавление</h1>
+<h1>Добавление альбома</h1>
 
 <?php echo $this->renderPartial('_form', array('model'=>$model)); ?>

@@ -42,7 +42,7 @@ class JobsController extends Controller
 		));
 		$this->currentPage = 'jobs';
         $metadata = Metadata::fetch(Metadata::POST_TYPE_JOBS);
-        $this->title = $metadata->meta_title.' | '.$this->place['meta_title'];
+        $this->title = $metadata->meta_title;//.' | '.$this->place['meta_title'];
         Yii::app()->clientScript->registerMetaTag($metadata->meta_keywords, 'Keywords');
         Yii::app()->clientScript->registerMetaTag($metadata->meta_description, 'Description');
 		$this->render('index',array(

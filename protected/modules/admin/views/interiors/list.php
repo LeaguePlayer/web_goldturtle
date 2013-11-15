@@ -1,10 +1,10 @@
 <?php
 $this->menu=array(
-	array('label'=>'Добавить','url'=>array('create')),
+	array('label'=>'Добавить альбом','url'=>array('create')),
 );
 ?>
 
-<h1>Управление <?php echo $model->translition(); ?></h1>
+<h1>Фотографии</h1>
 
 <?php $this->widget('bootstrap.widgets.TbGridView',array(
 	'id'=>'interiors-grid',

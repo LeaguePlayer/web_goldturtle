@@ -11,6 +11,7 @@ class ReviewsWidget extends CWidget
 			$criteria = new CDbCriteria;
 			$criteria->order = 'create_time DESC';
             $criteria->compare('status', Reviews::STATUS_PUBLISH);
+            $criteria->compare('place_id', $this->owner->place['id']);
 			$this->dataProvider = new CActiveDataProvider($model, array(
 				'criteria' => $criteria,
 				'pagination' => array(

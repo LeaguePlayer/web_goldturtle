@@ -18,7 +18,13 @@
 	<article class="news event">
 		<h1><span class="date"><strong><?php echo $model->getDay('public_date'); ?></strong> <?php echo $model->getMonth('public_date'); ?></span><?php echo $model->title;?></h1>
 		<div class="content">
-			<img src="<?php echo $model->getThumb('big'); ?>" alt="">
+            <?php if ( $model->isPreviewClickable() ): ?>
+                <a class="fancybox" href="<?php echo $model->getImage(); ?>">
+                    <img src="<?php echo $model->getThumb('big'); ?>" alt="">
+                </a>
+            <?php else: ?>
+			    <img src="<?php echo $model->getThumb('big'); ?>" alt="">
+            <?php endif; ?>
 			<div class="event_date"><span class="number"><?php echo $model->getDay('event_day'); ?></span> <?php echo $model->getMonth('event_day'); ?>. <?php if ( ($eventTime=$model->getTime('event_day')) !== null ) echo "Начало в {$eventTime}"; ?></div>
 			<?php echo $model->html_content; ?>
 			<div class="clear"></div>
@@ -31,7 +37,13 @@
 			<div class="text">
 				<?php echo $model->html_content; ?>
 			</div>
-			<img src="<?php echo $model->getThumb('stretch'); ?>" alt="">
+            <?php if ( $model->isPreviewClickable() ): ?>
+                <a class="fancybox" href="<?php echo $model->getImage(); ?>">
+                    <img src="<?php echo $model->getThumb('stretch'); ?>" alt="">
+                </a>
+            <?php else: ?>
+                <img src="<?php echo $model->getThumb('stretch'); ?>" alt="">
+            <?php endif; ?>
 			<div class="photos stalactite">
 				<?php foreach ($model->getGallery()->galleryPhotos as $photo): ?>
 					<a rel="photo-group" class="fancy" title="<?php echo $photo->description; ?>" href="<?php echo $photo->getPreview(); ?>"><img src="<?php echo $photo->getPreview('medium'); ?>"></a>

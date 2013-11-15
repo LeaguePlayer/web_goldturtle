@@ -44,7 +44,7 @@ class DishesController extends Controller
 			'pagination' => false
 		));
 
-        $this->title = $model->title.' | '.$this->place['meta_title'];
+        $this->title = $model->title;//.' | '.$this->place['meta_title'];
         Yii::app()->clientScript->registerMetaTag($model->meta_keywords, 'Keywords');
         Yii::app()->clientScript->registerMetaTag($model->meta_description, 'Description');
 		$this->render('view',array(

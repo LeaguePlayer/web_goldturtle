@@ -1,7 +1,7 @@
 <?php
 
 	$cs = Yii::app()->clientScript;
-	$cs->registerCssFile($this->getAssetsUrl().'/css/style.css?v=5');
+	$cs->registerCssFile($this->getAssetsUrl().'/css/style.css?v=6');
 	$cs->registerCssFile($this->getAssetsUrl().'/css/adipoli.css');
 	$cs->registerCssFile($this->getAssetsUrl().'/css/fancybox/jquery.fancybox.css');
 	$cs->registerCssFile($this->getAssetsUrl().'/css/jquery.ui/overcast/jquery-ui-1.10.3.custom.min.css');
@@ -25,8 +25,8 @@
 	<head>
 		<meta charset="utf-8" />
 		<meta name='yandex-verification' content='4606e8ea19a4c639' />
-		<link id="favicon" type="image/x-icon" rel="shortcut icon" href="/icon.ico" />
-    	<link rel="shortcut icon" type="image/x-icon" href="/icon.ico"/>
+		<link id="favicon" type="image/x-icon" rel="shortcut icon" href="/favicon.ico" />
+    	<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico"/>
 		<title><?php echo $this->title; ?></title>
 		<!--[if IE]>
 	    <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
@@ -46,7 +46,6 @@
 					<a href="<?php echo $this->createUrl('site/index', $getPlace); ?>"></a>
 				</div>
                 <div class="select_place">
-                    <div class="text">Выбор зала</div>
                     <ul>
                         <?php foreach ( $this->allPlaces as $place ): ?>
                             <li <?if($place->id === $this->place['id']):?>class="current"<?endif;?>><a <?if($place->id !== $this->place['id']):?> href="<?=$place->getChangeUrl();?>"<? endif; ?>><?=$place->title;?></a></li>
@@ -57,7 +56,7 @@
 					<ul class="main_menu">
                         <li <?php if ($this->currentPage == 'employees') echo "class='current'"; ?>><a <?php if ($this->currentPage != 'employees') echo "href='".$this->createUrl('/employees/index', $getPlace)."'"; ?>>Команда</a></li>
                         <li class="separator"></li>
-                        <li <?php if ($this->currentPage == 'ineriors') echo "class='current'"; ?>><a <?php if ($this->currentPage != 'ineriors') echo "href='".$this->createUrl('/interiors/index', $getPlace)."'"; ?>>Интерьер</a></li>
+                        <li <?php if ($this->currentPage == 'ineriors') echo "class='current'"; ?>><a <?php if ($this->currentPage != 'ineriors') echo "href='".$this->createUrl('/interiors/index', $getPlace)."'"; ?>>Фотографии</a></li>
                         <li class="separator"></li>
                         <li <?php if ($this->currentPage == 'partners') echo "class='current'"; ?>><a <?php if ($this->currentPage != 'partners') echo "href='".$this->createUrl('/partners/index', $getPlace)."'"; ?>>Партнеры</a></li>
                         <li class="separator"></li>
