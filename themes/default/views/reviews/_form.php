@@ -13,6 +13,8 @@
 		'enableClientValidation'=>false,
 	)); ?>
 
+		<?php echo $form->hiddenField($model, 'place_id'); ?>
+
 		<div class="row">
 			<?php echo $form->label($model, 'name'); ?>
 			<?php echo $form->textField($model, 'name', array(

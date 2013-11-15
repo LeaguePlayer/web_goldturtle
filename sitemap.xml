@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset
+      xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
+            http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
+<!-- created with Free Online Sitemap Generator www.xml-sitemaps.com -->
+
+<url>
+  <loc>http://cherepaha-rest.ru/</loc>
+  <priority>1.00</priority>
+</url>
+<url>
+  <loc>http://cherepaha-rest.ru/bar</loc>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>http://cherepaha-rest.ru/employees</loc>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>http://cherepaha-rest.ru/interiors</loc>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>http://cherepaha-rest.ru/partners</loc>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>http://cherepaha-rest.ru/page/contacti</loc>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>http://cherepaha-rest.ru/jobs</loc>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>http://cherepaha-rest.ru/menu</loc>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>http://cherepaha-rest.ru/dishes</loc>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>http://cherepaha-rest.ru/news</loc>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>http://cherepaha-rest.ru/reviews</loc>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>http://cherepaha-rest.ru/site/order</loc>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>http://cherepaha-rest.ru/chronicle</loc>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>http://cherepaha-rest.ru/reviews/add</loc>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>http://cherepaha-rest.ru/page/about</loc>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>http://cherepaha-rest.ru/banners</loc>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>http://cherepaha-rest.ru/bar/employees</loc>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>http://cherepaha-rest.ru/bar/interiors</loc>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>http://cherepaha-rest.ru/bar/partners</loc>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>http://cherepaha-rest.ru/bar/menu</loc>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>http://cherepaha-rest.ru/bar/dishes</loc>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>http://cherepaha-rest.ru/bar/news</loc>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>http://cherepaha-rest.ru/bar/chronicle</loc>
+  <priority>0.64</priority>
+</url>
+</urlset>

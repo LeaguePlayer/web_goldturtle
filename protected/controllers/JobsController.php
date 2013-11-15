@@ -33,6 +33,7 @@ class JobsController extends Controller
 		$criteria->order = 'create_time';
 		$criteria->addCondition('status=:status');
 		$criteria->params[':status'] = Jobs::STATUS_PUBLISH;
+		$criteria->compare('place_id', $this->place['id']);
 		$dataProvider=new CActiveDataProvider('Jobs', array(
 			'criteria' => $criteria,
 			'pagination' => array(
@@ -41,7 +42,7 @@ class JobsController extends Controller
 		));
 		$this->currentPage = 'jobs';
         $metadata = Metadata::fetch(Metadata::POST_TYPE_JOBS);
-        $this->title = $metadata->meta_title;
+        $this->title = $metadata->meta_title.' | '.$this->place['meta_title'];
         Yii::app()->clientScript->registerMetaTag($metadata->meta_keywords, 'Keywords');
         Yii::app()->clientScript->registerMetaTag($metadata->meta_description, 'Description');
 		$this->render('index',array(

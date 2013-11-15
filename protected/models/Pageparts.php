@@ -37,7 +37,7 @@ class Pageparts extends CActiveRecord
 	{
 		return array(
 			array('type', 'required'),
-			array('type', 'numerical', 'integerOnly'=>true),
+			array('type, place_id', 'numerical', 'integerOnly'=>true),
             array('content', 'safe'),
 			// The following rule is used by search().
 			array('id, type, content', 'safe', 'on'=>'search'),
@@ -58,6 +58,7 @@ class Pageparts extends CActiveRecord
 			'id' => 'ID',
 			'type' => 'Тип',
 			'content' => 'Контент',
+			'place_id' => 'Привязка к помещению',
 		);
 	}
 	
@@ -71,6 +72,7 @@ class Pageparts extends CActiveRecord
 		$criteria->compare('id',$this->id);
 		$criteria->compare('type',$this->type);
 		$criteria->compare('content',$this->content,true);
+		$criteria->compare('place_id',$this->place_id);
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,
@@ -82,11 +84,30 @@ class Pageparts extends CActiveRecord
 		return parent::model($className);
 	}
 
-    public static function getContent($type)
+    public static function getContent($type, $place = array())
     {
-        $model = self::model()->findByAttributes(array('type'=>$type));
-        if ( $model !== null )
-            return $model->content;
+        $model = self::model()->findByAttributes(array('type'=>$type, 'place_id'=>$place['id']));
+        if ( $model === null ) {
+        	$model = self::model()->findByAttributes(array('type'=>$type));
+        }
+        if ( $model !== null ) {
+        	$getPlace = ( $place['alias'] !== 'restourant' ) ? array('place'=>$place['alias']) : array();
+        	$replacements = array(
+        		'link_for_home'=>Yii::app()->urlManager->createUrl('site/index', $getPlace),
+        		'link_for_menu'=>Yii::app()->urlManager->createUrl('menu/index', $getPlace),
+        		'link_for_events'=>Events::getNewsUrl($place),
+        	);
+            return SiteHelper::replaceBlocks($model->content, $replacements);
+        }
+    }
+
+    public function getTypeLabel()
+    {
+    	$result = $this->partType;
+    	$place = Places::model()->findByPk($this->place_id);
+    	if ( $place )
+    		$result .= ' (' . $place->title . ')';
+    	return $result;
     }
 
 }

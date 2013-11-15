@@ -23,7 +23,7 @@
 	<!-- <end Left Side> -->
 
     <div class="content-box">
-        <?php echo Pageparts::getContent(Pageparts::PART_TYPE_CONTENT_BOX); ?>
+        <?php echo Pageparts::getContent(Pageparts::PART_TYPE_CONTENT_BOX, $this->place); ?>
     </div>
     <div>
         <section class="content col_1">

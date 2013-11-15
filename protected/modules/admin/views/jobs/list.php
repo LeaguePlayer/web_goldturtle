@@ -14,6 +14,12 @@ $this->menu=array(
 	'columns'=>array(
 		'name',
 		array(
+			'name'=>'place_id',
+			'type'=>'raw',
+			'value'=>'$data->place->title',
+			'filter'=>CHtml::listData(Places::model()->findAll(), 'id', 'title')
+		),
+		array(
 			'name'=>'status',
 			'type'=>'raw',
 			'value'=>'Jobs::getStatusAliases($data->status)',

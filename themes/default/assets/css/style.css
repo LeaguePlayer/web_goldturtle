@@ -331,6 +331,7 @@ ul.socials li a.vkontakte:hover {
     }
 	#header .top {
 		height: 110px;
+		padding-bottom: 20px;
 	}
     #header .select_place {
         display: inline-block;
@@ -636,12 +637,14 @@ ul.socials li a.vkontakte:hover {
 	}
 	.l_side .contacts h2 {
 		font-size: 18px;
-		color: #939393;
+		color: #000;
 		margin: 25px 0;
+		text-align: center;
 	}
 	.l_side .contacts p {
-		color: #939393;
+		color: #000;
 		line-height: 1.3;
+		text-align: center;
 	}
 	.l_side .contacts p.phone {
 		font-size: 20px;
@@ -742,6 +745,10 @@ ul.socials li a.vkontakte:hover {
         margin-bottom: 30px;
         padding: 0 0 0 20px;
         width: 725px;
+    }
+
+    #layout > .content-box p {
+        margin: 12px 0 10px;
     }
 
 	/*---- Контент ----*/

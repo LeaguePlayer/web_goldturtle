@@ -120,4 +120,18 @@ class SiteHelper {
 	    $message = str_replace("\n.", "\n..", $message);
         return mail($to,'=?UTF-8?B?'.base64_encode($subject).'?=',$message,$headers);
     }
+
+    public static function replaceBlocks($text, $replacements = array(), $startBlock = '[*', $endBlock = '*]')
+    {
+    	if ( empty($replacements) ) {
+    		return $text;
+    	}
+
+		foreach ($replacements as $alias => $replacement) {
+            $patterns[] = $startBlock . $alias . $endBlock;
+            $reps[] = $replacement;
+        }
+
+        return str_replace($patterns, $reps, $text);
+    }
 }

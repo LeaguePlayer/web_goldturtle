@@ -1,7 +1,7 @@
 <?php
 
 	$cs = Yii::app()->clientScript;
-	$cs->registerCssFile($this->getAssetsUrl().'/css/style.css?v=3');
+	$cs->registerCssFile($this->getAssetsUrl().'/css/style.css?v=5');
 	$cs->registerCssFile($this->getAssetsUrl().'/css/adipoli.css');
 	$cs->registerCssFile($this->getAssetsUrl().'/css/fancybox/jquery.fancybox.css');
 	$cs->registerCssFile($this->getAssetsUrl().'/css/jquery.ui/overcast/jquery-ui-1.10.3.custom.min.css');
@@ -24,6 +24,9 @@
 <html lang="ru">
 	<head>
 		<meta charset="utf-8" />
+		<meta name='yandex-verification' content='4606e8ea19a4c639' />
+		<link id="favicon" type="image/x-icon" rel="shortcut icon" href="/icon.ico" />
+    	<link rel="shortcut icon" type="image/x-icon" href="/icon.ico"/>
 		<title><?php echo $this->title; ?></title>
 		<!--[if IE]>
 	    <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
@@ -58,8 +61,6 @@
                         <li class="separator"></li>
                         <li <?php if ($this->currentPage == 'partners') echo "class='current'"; ?>><a <?php if ($this->currentPage != 'partners') echo "href='".$this->createUrl('/partners/index', $getPlace)."'"; ?>>Партнеры</a></li>
                         <li class="separator"></li>
-                        <li <?php if ($this->currentPage == 'contacti') echo "class='current'"; ?>><a <?php if ($this->currentPage != 'contacti') echo "href='".Pages::getUrlByAlias('contacti')."'"; ?>>Контакты</a></li>
-                        <li class="separator"></li>
                         <li <?php if ($this->currentPage == 'jobs') echo "class='current'"; ?>><a <?php if ($this->currentPage != 'jobs') echo "href='".$this->createUrl('/jobs/index')."'"; ?>>Вакансии</a></li>
 					</ul>
 
@@ -67,9 +68,9 @@
 
 					<ul class="action_menu">
                         <li><a class="menu" href="<?php echo $this->createUrl('/menu/index', $getPlace); ?>">Меню</a></li>
-                        <li><a class="dishes" href="<?php echo $this->createUrl('/dishes/index', $getPlace); ?>">Фото блюд</a></li>
                         <li><a class="news" href="<?php echo Events::getNewsUrl($this->place); ?>">События</a></li>
                         <li><a class="reviews" href="<?php echo $this->createUrl('/reviews/index'); ?>">Отзывы</a></li>
+                        <li><a class="news" href="<?php echo Pages::getUrlByAlias('contacti'); ?>">Контакты</a></li>
 						<li><a class="order fancybox-ajax" href="<?php echo $this->createUrl('/site/order') ?>">Забронировать столик</a></li>
 					</ul>
 				</div>
@@ -103,9 +104,51 @@
 
 		<footer id="footer" class="fix-width center">
             <div class="content">
-                <?php echo Pageparts::getContent(Pageparts::PART_TYPE_FOOTER); ?>
+                <?php echo Pageparts::getContent(Pageparts::PART_TYPE_FOOTER, $this->place); ?>
             </div>
 			<p class="amobile"><a href="http://amobile-studio.ru/"></a><span>Всегда только лучшие идеи</span></p>
 		</footer>
+
+
+		<!--LiveInternet counter--><script type="text/javascript"><!--
+		document.write("<a href='http://www.liveinternet.ru/click' "+
+		"target=_blank><img src='//counter.yadro.ru/hit?t39.6;r"+
+		escape(document.referrer)+((typeof(screen)=="undefined")?"":
+		";s"+screen.width+"*"+screen.height+"*"+(screen.colorDepth?
+		screen.colorDepth:screen.pixelDepth))+";u"+escape(document.URL)+
+		";"+Math.random()+
+		"' alt='' title='LiveInternet' "+
+		"border='0' width='0' height='0'><\/a>")
+		//--></script><!--/LiveInternet-->
+
+
+		<!-- Yandex.Metrika counter -->
+		<script type="text/javascript">
+		(function (d, w, c) {
+		    (w[c] = w[c] || []).push(function() {
+		        try {
+		            w.yaCounter22791595 = new Ya.Metrika({id:22791595,
+		                    clickmap:true,
+		                    trackLinks:true,
+		                    accurateTrackBounce:true});
+		        } catch(e) { }
+		    });
+		 
+		    var n = d.getElementsByTagName("script")[0],
+		        s = d.createElement("script"),
+		        f = function () { n.parentNode.insertBefore(s, n); };
+		    s.type = "text/javascript";
+		    s.async = true;
+		    s.src = (d.location.protocol == "https:" ? "https:" : "http:") + "//mc.yandex.ru/metrika/watch.js";
+		 
+		    if (w.opera == "[object Opera]") {
+		        d.addEventListener("DOMContentLoaded", f, false);
+		    } else { f(); }
+		})(document, window, "yandex_metrika_callbacks");
+		</script>
+		<noscript><div><img src="//mc.yandex.ru/watch/22791595" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+		<!-- /Yandex.Metrika counter -->
+
+
 	</body>
 </html>

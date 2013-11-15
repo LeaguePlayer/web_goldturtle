@@ -10,7 +10,7 @@
         array(
             'name'=>'type',
             'type'=>'raw',
-            'value'=>'$data->partType',
+            'value'=>'$data->getTypeLabel()',
             'filter'=>Pageparts::getPartTypes(),
         ),
 		array(

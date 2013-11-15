@@ -23,8 +23,8 @@ class Jobs extends EActiveRecord
 	public function rules()
 	{
 		return array(
-			array('name', 'required'),
-			array('status, sort, create_time, update_time', 'numerical', 'integerOnly'=>true),
+			array('name, place_id', 'required'),
+			array('status, place_id, sort, create_time, update_time', 'numerical', 'integerOnly'=>true),
 			array('name', 'length', 'max'=>256),
 			array('html_description, meta_keywords, meta_description', 'safe'),
 			// The following rule is used by search().
@@ -36,6 +36,7 @@ class Jobs extends EActiveRecord
 	public function relations()
 	{
 		return array(
+			'place'=>array(self::BELONGS_TO, 'Places', 'place_id'),
 		);
 	}
 
@@ -50,6 +51,7 @@ class Jobs extends EActiveRecord
 			'sort' => 'Вес для сортировки',
 			'create_time' => 'Дата создания',
 			'update_time' => 'Дата последнего редактирования',
+			'place_id' => 'Привязка к помещению'
 		);
 	}
 	
@@ -64,6 +66,7 @@ class Jobs extends EActiveRecord
 		$criteria->compare('name',$this->name,true);
 		$criteria->compare('html_description',$this->html_description,true);
 		$criteria->compare('status',$this->status);
+		$criteria->compare('place_id',$this->place_id);
 		$criteria->compare('sort',$this->sort);
 		$criteria->compare('create_time',$this->create_time);
 		$criteria->compare('update_time',$this->update_time);

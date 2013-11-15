@@ -32,6 +32,7 @@ class ReviewsController extends Controller
     {
         $criteria = new CDbCriteria;
         $criteria->compare('status', Reviews::STATUS_PUBLISH);
+        $criteria->compare('place_id', $this->place['id']);
         $criteria->order = 'create_time DESC';
         $dataProvider = new CActiveDataProvider('Reviews', array(
             'criteria' => $criteria,
@@ -40,7 +41,7 @@ class ReviewsController extends Controller
             ),
         ));
         $metadata = Metadata::fetch(Metadata::POST_TYPE_REVIEWS);
-        $this->title = $metadata->meta_title;
+        $this->title = $metadata->meta_title.' | '.$this->place['meta_title'];
         Yii::app()->clientScript->registerMetaTag($metadata->meta_keywords, 'Keywords');
         Yii::app()->clientScript->registerMetaTag($metadata->meta_description, 'Description');
         $this->render('index', array(
@@ -74,6 +75,7 @@ class ReviewsController extends Controller
 	public function actionAdd()
 	{
 		$model = new Reviews;
+		$model->place_id = $this->place['id'];
 		
 		if ( isset($_POST['Reviews']) ) {
 			$model->attributes = $_POST['Reviews'];

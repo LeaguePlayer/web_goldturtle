@@ -5,6 +5,8 @@
 
     <?php echo $form->dropDownListControlGroup($model,'type', Pageparts::getPartTypes(), array('class'=>'span8', 'empty' => 'Не задано', 'displaySize'=>1)); ?>
 
+    <?php echo $form->dropDownListControlGroup($model, 'place_id', CHtml::listData(Places::model()->findAll(), 'id', 'title'), array('class'=>'span8', 'displaySize'=>1, 'empty'=>'Не задано')); ?>
+
 	<div class='control-group'>
         <?php echo CHtml::activeLabelEx($model, 'content'); ?>
         <?php $this->widget('admin_ext.ckeditor.CKEditorWidget', array('model' => $model, 'attribute' => 'content',
