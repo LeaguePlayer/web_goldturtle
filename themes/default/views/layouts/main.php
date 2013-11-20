@@ -60,7 +60,7 @@
                         <li class="separator"></li>
                         <li <?php if ($this->currentPage == 'partners') echo "class='current'"; ?>><a <?php if ($this->currentPage != 'partners') echo "href='".$this->createUrl('/partners/index', $getPlace)."'"; ?>>Партнеры</a></li>
                         <li class="separator"></li>
-                        <li <?php if ($this->currentPage == 'jobs') echo "class='current'"; ?>><a <?php if ($this->currentPage != 'jobs') echo "href='".$this->createUrl('/jobs/index')."'"; ?>>Вакансии</a></li>
+                        <li <?php if ($this->currentPage == 'jobs') echo "class='current'"; ?>><a <?php if ($this->currentPage != 'jobs') echo "href='".$this->createUrl('/jobs/index', $getPlace)."'"; ?>>Вакансии</a></li>
 					</ul>
 
 					<div class="clear"></div>
@@ -68,7 +68,7 @@
 					<ul class="action_menu">
                         <li><a class="menu" href="<?php echo $this->createUrl('/menu/index', $getPlace); ?>">Меню</a></li>
                         <li><a class="news" href="<?php echo Events::getNewsUrl($this->place); ?>">События</a></li>
-                        <li><a class="reviews" href="<?php echo $this->createUrl('/reviews/index'); ?>">Отзывы</a></li>
+                        <li><a class="reviews" href="<?php echo $this->createUrl('/reviews/index', $getPlace); ?>">Отзывы</a></li>
                         <li><a class="news" href="<?php echo Pages::getUrlByAlias('contacti'); ?>">Контакты</a></li>
 						<li><a class="order fancybox-ajax" href="<?php echo $this->createUrl('/site/order') ?>">Забронировать столик</a></li>
 					</ul>

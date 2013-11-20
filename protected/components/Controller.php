@@ -72,8 +72,6 @@ class Controller extends CController
         $requestPlace = Yii::app()->request->getQuery('place');
         $cookie = Yii::app()->request->cookies['CURRENT_PLACE'];
 
-        $alias = '';
-
         if ( !isset($cookie) ) {
             if ( empty($requestPlace) ) {
                 $alias = 'restourant';
@@ -84,12 +82,9 @@ class Controller extends CController
         } else {
             $cookiePlace = CJSON::decode($cookie->value);
             if ( empty($requestPlace) ) {
-                $alias = $cookiePlace['alias'];
-                if ( $this->route === 'site/index' ) {
-                    $alias = 'restourant';
-                    if ( $alias !== $cookiePlace['alias'] ) {
-                        $cookiePlace = $this->savePlaceToCookie($alias);
-                    }
+                $alias = 'restourant';
+                if ( $cookiePlace['alias'] !== 'restourant' ) {
+                    $cookiePlace = $this->savePlaceToCookie($alias);
                 }
             } else if ( $requestPlace !== $cookiePlace['alias'] ) {
                 $alias = $requestPlace;
