@@ -12,6 +12,7 @@ class GalleryManager extends CWidget
     /** @var string Route to gallery controller */
     public $controllerRoute = false;
     public $assets;
+    public $previewVersion = '';
 
     public function init()
     {
@@ -50,7 +51,7 @@ class GalleryManager extends CWidget
                 'rank' => $photo->rank,
                 'name' => (string)$photo->name,
                 'description' => (string)$photo->description,
-                'preview' => $photo->getPreview(),
+                'preview' => $photo->getPreview($previewVersion),
                 'main' => $photo->main,
             );
         }

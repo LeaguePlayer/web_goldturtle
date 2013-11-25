@@ -30,7 +30,7 @@ class Metadata extends CActiveRecord
             self::POST_TYPE_CHRONICLES => 'Страница "Хроника"',
             self::POST_TYPE_DISHES => 'Страница "Фото блюд"',
             self::POST_TYPE_MENU => 'Страница "Меню ресторана"',
-            self::POST_TYPE_INTERIORS => 'Страница "Интерьер"',
+            self::POST_TYPE_INTERIORS => 'Страница "Фотографии"',
             self::POST_TYPE_PLACES => 'Страница "Выбор зала"',
             self::POST_TYPE_EMPLOYEES => 'Страница "Сотрудники"',
             self::POST_TYPE_JOBS => 'Страница "Вакансии"',

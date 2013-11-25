@@ -13,6 +13,7 @@
 			echo '<p class="help-block">Прежде чем загружать изображения, нужно сохранить текущее состояние</p>';
 		} else {
 			$this->widget('admin_ext.imagesgallery.GalleryManager', array(
+				'previewVersion'=>'side',
 				'gallery' => $model->galleryManager->getGallery(),
 				'controllerRoute' => '/admin/gallery',
 			));
