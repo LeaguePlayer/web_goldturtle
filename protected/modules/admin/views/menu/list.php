@@ -1,4 +1,5 @@
 <?php
+
 $this->menu=array(
 	array('label'=>'Добавить','url'=>array('create')),
 );
@@ -11,6 +12,11 @@ $this->menu=array(
 	'dataProvider'=>$model->search(),
 	'filter'=>$model,
 	'type'=>TbHtml::GRID_TYPE_HOVER,
+    'afterAjaxUpdate'=>"function() {sortGrid('menu')}",
+    'rowHtmlOptionsExpression'=>'array(
+        "id"=>"items[]_".$data->id,
+        "class"=>"status_".$data->status,
+    )',
 	'columns'=>array(
 		array(
 			'header'=>'Фото',

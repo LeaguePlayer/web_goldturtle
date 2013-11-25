@@ -12,6 +12,8 @@
  */
 class EActiveRecord extends CActiveRecord
 {
+    public $max_sort;
+
 	// Статусы в базе данных
 	const STATUS_CLOSED = 0;
 	const STATUS_PUBLISH = 1;
@@ -177,6 +179,9 @@ class EActiveRecord extends CActiveRecord
 	public function beforeSave()
 	{
 		$this->logUpdate();
+        if ( empty($this->sort) ) {
+            $this->sort = self::model(get_class($this))->find(array('select'=>'MAX(sort) as max_sort'))->max_sort + 1;
+        }
 		return parent::beforeSave();
 	}
     

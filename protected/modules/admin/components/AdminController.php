@@ -21,6 +21,7 @@ class AdminController extends CController
             'delete' => 'DeleteAction',
             'restore' => 'RestoreAction',
             'view' => 'ViewAction',
+            'sort' => 'SortAction',
         );
     }
 	

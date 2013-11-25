@@ -57,7 +57,7 @@ class MenuController extends Controller
 	public function actionIndex()
 	{
 		$criteria = new CDbCriteria;
-		$criteria->order = 'create_time';
+		$criteria->order = 'sort';
 		$criteria->addCondition('status=:status AND place_id=:place_id');
 		$criteria->params[':status'] = Menu::STATUS_PUBLISH;
 		$criteria->params[':place_id'] = $this->place['id'];
