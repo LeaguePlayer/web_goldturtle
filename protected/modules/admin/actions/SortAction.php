@@ -21,9 +21,12 @@ class SortAction extends AdminAction
 
             $aValues = array_values( CHtml::listData($actualModels, 'id', 'sort') );
 
+            $minValue = min($aValues);
             $i = 0;
             foreach ($_POST['items'] as $id) {
-                CActiveRecord::model($this->getModelName())->updateByPk($id, array('sort'=>$aValues[$i++]));
+                $sortValue = empty($aValues[$i]) ? $minValue++ : $aValues[$i];
+                $i++;
+                CActiveRecord::model($this->getModelName())->updateByPk($id, array('sort'=>$sortValue));
             }
         }
     }

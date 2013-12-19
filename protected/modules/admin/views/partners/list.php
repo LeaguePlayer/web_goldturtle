@@ -37,7 +37,7 @@ $this->menu=array(
 			'name'=>'status',
 			'type'=>'raw',
 			'value'=>'Partners::getStatusAliases($data->status)',
-			'filter'=>array(Partners::getStatusAliases())
+			'filter'=>Partners::getStatusAliases()
 		),
 		'sort',
 		array(
