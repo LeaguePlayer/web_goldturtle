@@ -33,6 +33,8 @@
 				// Создание метки с пользовательским макетом балуна.
 				var myPlacemark = window.myPlacemark = new ymaps.Placemark(myMap.getCenter(), {
 					addres: $('#address').val(),
+					balloonContentHeader: 'Адрес',
+    				balloonContentBody: $('#address').val(),
 				}, {
 					iconImageHref: '<?= $this->getAssetsUrl() . '/img/marker.png'; ?>',
 				    // Не скрываем иконку при открытом балуне.

@@ -118,6 +118,8 @@ body {
 .fix-width {
 	width: 1000px;
 	margin: 0 auto;
+	
+
 }
 
 .clear {
@@ -242,7 +244,11 @@ ul.socials li a.instagramm {
  *********/
 #header {
 	display: block;
-	background: url('../img/bg-pattern-white.jpg') repeat;
+	/*background: url('../img/bg-pattern-white.jpg') repeat;*/
+	/*background: url('../img/bg-pattern-white.jpg') repeat;  http://s019.radikal.ru/i634/1311/e5/add8e40896de.jpg*/
+	background:url('http://cherepaha-rest.ru/media/images/novyj-god4.jpg') no-repeat;
+	background-size:100%;
+	padding-top:20px;
 	margin-bottom: 90px;
 }
     #header .logo_container {
@@ -324,6 +330,8 @@ ul.socials li a.instagramm {
     }
 	#header .top {
 		height: 110px;
+			background-color:#eaeaea;
+	padding-right:20px;
 	}
     #header .select_place {
         display: inline-block;
@@ -1583,7 +1591,7 @@ article.event .content p {
 	margin-bottom: 20px;
 	padding: 0 20px;
 	overflow: hidden;
-	height: 100px;
+	height: 110px;
 }
 .news_rounder a.prev,
 .news_rounder a.next {
@@ -1853,12 +1861,8 @@ ul.round {
  **********************/
 .partners-list {}
 .partners-list .item {
-	margin-left: 9px;
-    margin-right: 9px;
-	margin-bottom: 16px;
-	display: inline-block;
-	vertical-align: top;
-	width: 160px;
+	margin-bottom: 26px;
+	display: block;
 }
 .partners-list .item h3 {
 	display: table-cell;
@@ -1867,10 +1871,22 @@ ul.round {
 	font-size: 20px;
 }
 .partners-list .item img {
-	width: 160px;
+	width: 210px;
+	display: inline-block;
+	vertical-align: middle;
+	margin-right: 20px;
+	
 }
 .partners-list .item a {
-	display: block;
+	display: inline-block;
+	vertical-align: middle;
+	width: 400px;
+	color: black;
+	font-size: 16px;
+	text-decoration: underline;
+}
+.partners-list .item a:hover {
+	text-decoration: none;
 }
 .partners-list .item p {
 	display: block;

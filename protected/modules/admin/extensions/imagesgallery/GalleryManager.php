@@ -51,7 +51,7 @@ class GalleryManager extends CWidget
                 'rank' => $photo->rank,
                 'name' => (string)$photo->name,
                 'description' => (string)$photo->description,
-                'preview' => $photo->getPreview($previewVersion),
+                'preview' => $photo->getPreview('manager_preview'),
                 'main' => $photo->main,
             );
         }

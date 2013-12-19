@@ -31,7 +31,14 @@ $(document).ready(function() {
 		});
 	}
 
-	$('.fancy').fancybox();
+	var fancyTpl = {
+		next: '<a class="fancybox-nav fancybox-next" href="javascript:;"><span></span></a>',
+		prev: '<a class="fancybox-nav fancybox-prev" href="javascript:;"><span></span></a>'
+	};
+
+	$('.fancy').fancybox({
+		tpl: fancyTpl
+	});
 	$(".stalactite").stalactite({
 		duration: 200,                        // Duration of animation.
 		easing: 'swing',                      // Easing method.
@@ -45,10 +52,13 @@ $(document).ready(function() {
 		}
 	});
 	
-	$('.fancybox').fancybox();
+	$('.fancybox').fancybox({
+		tpl: fancyTpl
+	});
 	
 	$('.fancybox-ajax').fancybox({
 		type: 'ajax',
+		tpl: fancyTpl,
 		afterShow: function() {
 			var $this = this;
 			var bindEvents = function(content) {

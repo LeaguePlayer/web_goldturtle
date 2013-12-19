@@ -129,6 +129,8 @@ class GalleryPhoto extends CActiveRecord
 
     private function getFileName($version = '')
     {
+        if ( $version === 'manager_preview' )
+            return '_'.$this->id;
         return $this->id . $version;
     }
 

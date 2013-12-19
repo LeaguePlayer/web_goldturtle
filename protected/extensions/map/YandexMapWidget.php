@@ -30,6 +30,8 @@ class YandexMapWidget extends CWidget
 						// Создание метки с пользовательским макетом балуна.
 						var myPlacemark = window.myPlacemark = new ymaps.Placemark(myMap.getCenter(), {
 							addres: $('#address').text(),
+							balloonContentHeader: 'Адрес',
+            				balloonContentBody: $('#address').text(),
 						}, {
 							iconImageHref: '".$this->owner->getAssetsUrl()."/img/marker.png',
 							// Не скрываем иконку при открытом балуне.
