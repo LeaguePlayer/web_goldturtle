@@ -1,6 +1,4 @@
 var myMap, myPlacemark, coords;
-
-console.log(myPlacemark == undefined);
 ymaps.ready(init);
 
 function init () {

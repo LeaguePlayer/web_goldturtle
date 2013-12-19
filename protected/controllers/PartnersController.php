@@ -34,6 +34,7 @@ class PartnersController extends Controller
 		$criteria->addCondition('status=:status');
 		$criteria->compare('place_id', $this->place['id']);
 		$criteria->params[':status'] = Partners::STATUS_PUBLISH;
+        $criteria->order = 'sort';
 		$dataProvider=new CActiveDataProvider('Partners', array(
 			'criteria' => $criteria,
 			'pagination' => false

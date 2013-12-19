@@ -11,6 +11,10 @@ $this->menu=array(
 	'dataProvider'=>$model->search(),
 	'filter'=>$model,
 	'type'=>TbHtml::GRID_TYPE_HOVER,
+    'afterAjaxUpdate'=>"function() {sortGrid('partners')}",
+    'rowHtmlOptionsExpression'=>'array(
+        "id"=>"items[]_".$data->id
+    )',
 	'columns'=>array(
 		array(
 			'header'=>'Фото',
@@ -52,3 +56,5 @@ $this->menu=array(
 		),
 	),
 )); ?>
+
+<?php Yii::app()->clientScript->registerScript('sort_grid', "$(document).ready(sortGrid('partners'));", CClientScript::POS_END); ?>
