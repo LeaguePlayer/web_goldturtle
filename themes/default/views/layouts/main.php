@@ -105,7 +105,6 @@
             <div class="content">
                 <?php echo Pageparts::getContent(Pageparts::PART_TYPE_FOOTER, $this->place); ?>
             </div>
-			<p class="amobile"><a href="http://amobile-studio.ru/"></a><span>Всегда только лучшие идеи</span></p>
 		</footer>
 
 
